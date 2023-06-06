@@ -14,6 +14,7 @@ namespace Beer_StoreOrder.Api.Controllers
         {
             _storeService = storeService;
         }
+
         #region "POST: api/brewery"
         // Adding Brewery data in the Brewery Table
         [HttpPost]
@@ -25,6 +26,14 @@ namespace Beer_StoreOrder.Api.Controllers
         {
             try
             {
+                if (brewery.Id == 0)
+                {
+                    return BadRequest();
+                }
+                else if(BreweryExists(brewery.Id))
+                {
+                    throw new ApplicationException("DuplicatedID Found");
+                }
                 await _storeService.PostBrewery(brewery);
                 return CreatedAtAction("PostBrewery", new { id = brewery.Id }, brewery);
             }
@@ -55,12 +64,12 @@ namespace Beer_StoreOrder.Api.Controllers
                     throw new ApplicationException("ID Not Found");
                 }
                 await _storeService.PutBrewery(id, brewery);
+                return CreatedAtAction("PutBrewery", new { id = brewery.Id }, brewery);
             }
             catch (Exception ex)
             {
                throw new Exception(ex.Message);
-            }
-            return Ok();            
+            }                    
         }
         #endregion
 

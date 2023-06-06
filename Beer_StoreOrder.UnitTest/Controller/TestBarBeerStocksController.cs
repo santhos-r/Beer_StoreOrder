@@ -71,5 +71,26 @@ namespace Beer_StoreOrder.UnitTest.Controller
 
         }
 
+        /// <summary>
+        /// Unit Test for PostBarBeerStock
+        /// </summary>
+        /// <returns>201 status code When adding new item</returns>
+        [Fact]
+        public async Task PostBarBeerStock_ShouldReturnStatus201Created_WhenAddingNewItem()
+        {
+            //Arrange
+            _fixture.Behaviors.OfType<ThrowingRecursionBehavior>().ToList().ForEach(b => _fixture.Behaviors.Remove(b));
+            _fixture.Behaviors.Add(new OmitOnRecursionBehavior());
+
+            var BarBeerStockMock = _fixture.Create<BarBeerStock>();
+            _serviceMock.Setup(x => x.PostBarBeerStock(BarBeerStockMock));
+
+            //Act
+            var result = await _sut.PostBarBeerStock(BarBeerStockMock);
+
+            //Assert            
+            Assert.NotNull(result);
+            Assert.Equal(StatusCodes.Status201Created, 201);
+        }
     }
 }

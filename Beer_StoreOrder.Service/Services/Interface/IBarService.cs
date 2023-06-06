@@ -9,6 +9,6 @@ namespace Beer_StoreOrder.Service.Services.Interface
         Task PutBar(long id, Bar bar);
         Task<IEnumerable<Bar>> GetBars();
         Task<ActionResult<Bar>> GetBarbyId(long id);
-        bool BarExists(long id);
+        public bool BarExists(long id);
     }
 }

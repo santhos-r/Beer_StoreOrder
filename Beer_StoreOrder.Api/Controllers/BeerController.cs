@@ -27,6 +27,14 @@ namespace Beer_StoreOrder.Api.Controllers
         {
             try
             {
+                if (beer.Id == 0)
+                {
+                    return BadRequest();
+                }
+                else if (BeerExists(beer.Id))
+                {
+                    throw new ApplicationException("DuplicatedID Found");
+                }
                 await _storeService.PostBeer(beer);
                 return CreatedAtAction("PostBeer", new { id = beer.Id }, beer);
             }
@@ -55,7 +63,7 @@ namespace Beer_StoreOrder.Api.Controllers
                     throw new ApplicationException("ID Not Found");
                 }
                 await _storeService.PutBeer(id, beer);
-                return Ok();
+                return CreatedAtAction("PutBeer", new { id = beer.Id }, beer);
             }
             catch (Exception ex)
             {

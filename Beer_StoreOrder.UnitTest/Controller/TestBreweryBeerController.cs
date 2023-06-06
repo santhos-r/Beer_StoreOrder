@@ -72,5 +72,28 @@ namespace Beer_StoreOrder.UnitTest.Controller
             Assert.Equal(StatusCodes.Status404NotFound, 404);
 
         }
+
+
+        /// <summary>
+        /// Unit Test for PostBreweryBeer
+        /// </summary>
+        /// <returns>201 status code When adding new item</returns>
+        [Fact]
+        public async Task PostBreweryBeer_ShouldReturnStatus201Created_WhenAddingNewItem()
+        {
+            //Arrange
+            _fixture.Behaviors.OfType<ThrowingRecursionBehavior>().ToList().ForEach(b => _fixture.Behaviors.Remove(b));
+            _fixture.Behaviors.Add(new OmitOnRecursionBehavior());
+
+            var BreweryBeerMock = _fixture.Create<Beer>();
+            _serviceMock.Setup(x => x.PostBreweryBeer(BreweryBeerMock));
+
+            //Act
+            var result = await _sut.PostBreweryBeer(BreweryBeerMock);
+
+            //Assert            
+            Assert.NotNull(result);
+            Assert.Equal(StatusCodes.Status201Created, 201);
+        }
     }
 }

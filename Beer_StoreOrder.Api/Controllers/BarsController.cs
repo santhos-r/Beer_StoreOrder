@@ -20,19 +20,26 @@ namespace Beer_StoreOrder.Api.Controllers
         // Adding Bars data in the Bars Table
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
 
         public async Task<ActionResult<Bar>> PostBar(Bar bar)
         {
             try
             {
+                if(bar.Id==0)
+                {
+                    return BadRequest();
+                }
+                else if (BarExists(bar.Id))
+                {
+                    throw new ApplicationException("DuplicatedID Found");
+                }
                 await _storeService.PostBar(bar);
                 return CreatedAtAction("PostBar", new { id = bar.Id }, bar);
             }
             catch (Exception ex)
-            {
-               throw new Exception(ex.Message);
+            {               
+                throw new Exception(ex.Message);                
             }
         }
         #endregion
@@ -56,11 +63,11 @@ namespace Beer_StoreOrder.Api.Controllers
                     throw new ApplicationException("ID Not Found");
                 }
                 await _storeService.PutBar(id, bar);
-                return Ok();
+                return CreatedAtAction("PutBar", new { id = bar.Id }, bar);
             }
             catch (Exception ex)
             {
-               throw new Exception(ex.Message);
+                throw new Exception(ex.Message);
             }
         }
         #endregion
@@ -79,7 +86,7 @@ namespace Beer_StoreOrder.Api.Controllers
             }
             catch (Exception ex)
             {
-               throw new Exception(ex.Message);
+                throw new Exception(ex.Message);
             }
         }
         #endregion

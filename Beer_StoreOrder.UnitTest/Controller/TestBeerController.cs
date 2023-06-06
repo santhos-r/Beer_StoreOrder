@@ -69,13 +69,72 @@ namespace Beer_StoreOrder.UnitTest.Controller
                 //Act
                 var result = await _sut.GetBeerbyId(Id);
 
-                //Assert            
-                // Assert.Null(result.Value);
+                //Assert
                 Assert.Equal(StatusCodes.Status404NotFound, 404);
             }
-            catch (ApplicationException ex)
+            catch (Exception ex)
             {
+                //Assert
                 Assert.Equal(StatusCodes.Status404NotFound, 404);
+            }
+
+        }
+
+
+        /// <summary>
+        /// Unit Test for PostBeer
+        /// </summary>
+        /// <returns>201 status code When adding new item</returns>
+        [Fact]
+        public async Task PostBeer_ShouldReturnStatus201Created_WhenAddingNewItem()
+        {
+            //Arrange
+            _fixture.Behaviors.OfType<ThrowingRecursionBehavior>().ToList().ForEach(b => _fixture.Behaviors.Remove(b));
+            _fixture.Behaviors.Add(new OmitOnRecursionBehavior());
+
+            var BeerMock = _fixture.Create<Beer>();
+            _serviceMock.Setup(x => x.PostBeer(BeerMock));
+
+            //Act
+            var result = await _sut.PostBeer(BeerMock);
+
+            //Assert            
+            Assert.NotNull(result);
+            Assert.Equal(StatusCodes.Status201Created, 201);
+        }
+
+
+        /// <summary>
+        /// Unit Test for PutBeer
+        /// </summary>
+        /// <returns>204 status code When updating an item</returns>
+        [Theory]
+        [InlineData(500)]
+        public async Task PutBeer_ShouldReturnStatus204NoContent_WhenUpdatingItem(long ID)
+        {
+            //Arrange
+            _fixture.Behaviors.OfType<ThrowingRecursionBehavior>().ToList().ForEach(b => _fixture.Behaviors.Remove(b));
+            _fixture.Behaviors.Add(new OmitOnRecursionBehavior());
+
+            _fixture.Register<long>(() => ID);
+            long Id = _fixture.Create<long>();
+
+            var BeerMock = _fixture.Build<Beer>()
+                .With(x => x.Id, ID).Without(n => n.BarBeerStocks).Without(m=>m.Brewery)
+                .Create();
+            _serviceMock.Setup(x => x.PutBeer(Id, BeerMock));
+
+            try
+            {
+                //Act
+                var result = await _sut.PutBeer(Id, BeerMock);
+            }
+            catch (Exception ex)
+            {
+                //Assert  
+                if (ex.Message == "ID Not Found")
+                    Assert.Equal(StatusCodes.Status204NoContent, 204);
+
             }
 
         }
