@@ -32,7 +32,7 @@ namespace Beer_StoreOrder.Api.Controllers
             }
             catch (Exception ex)
             {
-                throw new ApplicationException(ex.Message);
+               throw new Exception(ex.Message);
             }
         }
         #endregion
@@ -59,7 +59,7 @@ namespace Beer_StoreOrder.Api.Controllers
             }
             catch (Exception ex)
             {
-                throw new ApplicationException(ex.Message);
+               throw new Exception(ex.Message);
             }            
         }
         #endregion
@@ -81,7 +81,7 @@ namespace Beer_StoreOrder.Api.Controllers
             }
             catch (Exception ex)
             {
-                throw new ApplicationException(ex.Message);
+               throw new Exception(ex.Message);
             }
         }
         #endregion
@@ -102,7 +102,7 @@ namespace Beer_StoreOrder.Api.Controllers
             }
             catch (Exception ex)
             {
-                throw new ApplicationException(ex.Message);
+               throw new Exception(ex.Message);
             }
         }
         #endregion

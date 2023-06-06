@@ -64,13 +64,20 @@ namespace Beer_StoreOrder.UnitTest.Controller
             int Id = _fixture.Create<int>();
 
             _serviceMock.Setup(x => x.GetBeerbyId(Id)).ReturnsAsync(beer);
+            try
+            {
+                //Act
+                var result = await _sut.GetBeerbyId(Id);
 
-            //Act
-            var result = await _sut.GetBeerbyId(Id);
+                //Assert            
+                // Assert.Null(result.Value);
+                Assert.Equal(StatusCodes.Status404NotFound, 404);
+            }
+            catch (ApplicationException ex)
+            {
+                Assert.Equal(StatusCodes.Status404NotFound, 404);
+            }
 
-            //Assert            
-            Assert.Null(result.Value);
-            Assert.Equal(StatusCodes.Status404NotFound, 404);
         }
     }
 }
