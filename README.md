@@ -54,4 +54,4 @@ dotnet tool install --global dotnet-ef
 dotnet tool update --global dotnet-ef
 
 * Scaffold SQLite Database =>
-dotnet ef dbcontext scaffold Name=NorthwindDB Microsoft.EntityFrameworkCore.Sqlite --output-dir Models --context-dir Data --namespace Northwind.Models --context-namespace Northwind.Data --context NorthwindContext -f --no-onconfiguring
+dotnet ef dbcontext scaffold Name=NorthwindDB Microsoft.EntityFrameworkCore.Sqlite --output-dir Models --context-dir Data --namespace Beer_StoreOrder.Models --context-namespace Northwind.Data --context NorthwindContext -f --no-onconfiguring
