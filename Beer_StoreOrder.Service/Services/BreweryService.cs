@@ -1,5 +1,5 @@
-﻿using Northwind.Data;
-using Beer_StoreOrder.Model;
+﻿using Beer_StoreOrder.Model.Data;
+using Beer_StoreOrder.Model.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Beer_StoreOrder.Service.Services.Interface;

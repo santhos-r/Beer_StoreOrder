@@ -3,7 +3,7 @@ using Moq;
 using Beer_StoreOrder.Api.Controllers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Beer_StoreOrder.Model;
+using Beer_StoreOrder.Model.Models;
 using Beer_StoreOrder.Service.Services.Interface;
 
 namespace Beer_StoreOrder.UnitTest.Controller

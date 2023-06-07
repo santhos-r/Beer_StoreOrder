@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Beer_StoreOrder.Model;
+using Beer_StoreOrder.Model.Models;
 
 namespace Beer_StoreOrder.Service.Services.Interface
 {

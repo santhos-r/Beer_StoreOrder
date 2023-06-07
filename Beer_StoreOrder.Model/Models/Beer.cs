@@ -1,4 +1,4 @@
-﻿namespace Beer_StoreOrder.Model;
+﻿namespace Beer_StoreOrder.Model.Models;
 public partial class Beer
 {
     public long Id { get; set; }

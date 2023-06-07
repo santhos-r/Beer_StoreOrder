@@ -3,7 +3,7 @@ using Beer_StoreOrder.Api.Controllers;
 using AutoFixture;
 using Microsoft.AspNetCore.Http;
 using Beer_StoreOrder.Service.Services.Interface;
-using Beer_StoreOrder.Model;
+using Beer_StoreOrder.Model.Models;
 
 namespace Beer_StoreOrder.UnitTest.Controller
 {

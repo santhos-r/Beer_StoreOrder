@@ -1,7 +1,7 @@
-﻿using Beer_StoreOrder.Model;
+﻿using Beer_StoreOrder.Model.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Northwind.Data;
+namespace Beer_StoreOrder.Model.Data;
 
 public partial class NorthwindContext : DbContext
 {

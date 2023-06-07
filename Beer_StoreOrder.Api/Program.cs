@@ -3,7 +3,7 @@ using Beer_StoreOrder.Service.Services;
 using Beer_StoreOrder.Service.Services.Interface;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
-using Northwind.Data;
+using Beer_StoreOrder.Model.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 

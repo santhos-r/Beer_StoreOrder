@@ -4,7 +4,7 @@ using Beer_StoreOrder.Service.Services.Interface;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
-using Beer_StoreOrder.Model;
+using Beer_StoreOrder.Model.Models;
 
 namespace Beer_StoreOrder.UnitTest.Controller
 {

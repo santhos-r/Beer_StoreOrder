@@ -1,7 +1,7 @@
 ﻿using Moq;
 using AutoFixture;
 using Beer_StoreOrder.Api.Controllers;
-using Beer_StoreOrder.Model;
+using Beer_StoreOrder.Model.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using Beer_StoreOrder.Service.Services.Interface;

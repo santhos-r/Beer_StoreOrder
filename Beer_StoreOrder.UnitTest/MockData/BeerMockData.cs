@@ -1,4 +1,4 @@
-﻿using Beer_StoreOrder.Model;
+﻿using Beer_StoreOrder.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
