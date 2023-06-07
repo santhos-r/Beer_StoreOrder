@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\buildMultiTargeting\Beer_StoreOrder.Modal.props" />
-</Project>

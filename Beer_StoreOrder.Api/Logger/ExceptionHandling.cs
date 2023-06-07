@@ -1,8 +1,5 @@
 ﻿using System.Net;
 using System.Text.Json;
-using Beer_StoreOrder.Api.Controllers;
-using Microsoft.AspNetCore.Mvc;
-using Beer_StoreOrder.Model;
 
 namespace Beer_StoreOrder.Api.Logger;
 
