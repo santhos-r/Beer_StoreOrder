@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "fVPpHoAjKMv1kun5HndqqABUThiDs4V+XKCK2AZpOpPwKviAo1/61eQ+f5hQCuHI18UtU2Sk5WZEw3aKGoG5Sw==",
+  "dgSpecHash": "YfSrJj7WMAAhBCYT/A44516qflncTpPhBiECOxsB5LtBETpl0qlX05VOkN44+blJB/I/EWp5/2VrSAiK2C4VXQ==",
   "success": true,
-  "projectFilePath": "E:\\NewChanges_with_Task\\Beer_StoreOrder\\Beer_StoreOrder.Model\\Beer_StoreOrder.Infrastructure.csproj",
+  "projectFilePath": "E:\\NewChanges_with_Task\\Beer_StoreOrder\\Beer_StoreOrder.Model\\Beer_StoreOrder.Model.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Vivi0\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Vivi0\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\6.0.16\\microsoft.aspnetcore.jsonpatch.6.0.16.nupkg.sha512",

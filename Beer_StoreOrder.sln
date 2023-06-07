@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Beer_StoreOrder.UnitTest", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Beer_StoreOrder.Api", "Beer_StoreOrder.API\Beer_StoreOrder.Api.csproj", "{72EA3625-A3B1-4336-8376-8FE6C2D913B9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Beer_StoreOrder.Infrastructure", "Beer_StoreOrder.Model\Beer_StoreOrder.Infrastructure.csproj", "{51531695-665A-4646-A830-7EBEF6355B25}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Beer_StoreOrder.Model", "Beer_StoreOrder.Model\Beer_StoreOrder.Model.csproj", "{51531695-665A-4646-A830-7EBEF6355B25}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

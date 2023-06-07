@@ -1,8 +1,8 @@
 {
   "Version": 1,
-  "Hash": "j6Iwr+Z7lXXTwlZpvxO36rXvjgAw52I8orGDHo8Z+7A=",
-  "Source": "Beer_StoreOrder.Infrastructure",
-  "BasePath": "_content/Beer_StoreOrder.Infrastructure",
+  "Hash": "pfsQTCLjW8KqDU9O7ZyLdbDqDeOGF1KyEnIgo6/0g74=",
+  "Source": "Beer_StoreOrder.Model",
+  "BasePath": "_content/Beer_StoreOrder.Model",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],

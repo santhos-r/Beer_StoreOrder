@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Northwind.Models;
+using Beer_StoreOrder.Model;
 
 namespace Beer_StoreOrder.Service.Services.Interface
 {

@@ -1,6 +1,5 @@
 ﻿using Northwind.Data;
-using Northwind.Models;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using Beer_StoreOrder.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Beer_StoreOrder.Service.Services.Interface;
@@ -34,7 +33,7 @@ namespace Beer_StoreOrder.Service.Services
                 throw;
             }
         }
-        async Task IBreweryService.PutBrewery(long id, Northwind.Models.Brewery brewery)
+        async Task IBreweryService.PutBrewery(long id, Brewery brewery)
         {
             try
             {

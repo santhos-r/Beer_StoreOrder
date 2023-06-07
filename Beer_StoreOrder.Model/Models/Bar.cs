@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Northwind.Models;
-public class Bar
+﻿namespace Beer_StoreOrder.Model;
+public partial class Bar
 {
     public long Id { get; set; }
 
@@ -10,5 +7,5 @@ public class Bar
 
     public string? Address { get; set; }
 
-    public ICollection<BarBeerStock> BarBeerStocks { get; set; } = new List<BarBeerStock>();
+    public virtual ICollection<BarBeerStock> BarBeerStocks { get; set; } = new List<BarBeerStock>();
 }

@@ -4466,7 +4466,7 @@
           "Microsoft.AspNetCore.App"
         ]
       },
-      "Beer_StoreOrder.Infrastructure/1.0.0": {
+      "Beer_StoreOrder.Model/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
@@ -4476,10 +4476,10 @@
           "Microsoft.NET.Test.Sdk": "17.3.2"
         },
         "compile": {
-          "bin/placeholder/Beer_StoreOrder.Infrastructure.dll": {}
+          "bin/placeholder/Beer_StoreOrder.Model.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Beer_StoreOrder.Infrastructure.dll": {}
+          "bin/placeholder/Beer_StoreOrder.Model.dll": {}
         },
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
@@ -4489,7 +4489,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
-          "Beer_StoreOrder.Infrastructure": "1.0.0",
+          "Beer_StoreOrder.Model": "1.0.0",
           "Microsoft.AspNetCore.Mvc.NewtonsoftJson": "6.0.16",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.16",
           "Microsoft.EntityFrameworkCore.Sqlite": "7.0.5",
@@ -12488,10 +12488,10 @@
       "path": "../Beer_StoreOrder.API/Beer_StoreOrder.Api.csproj",
       "msbuildProject": "../Beer_StoreOrder.API/Beer_StoreOrder.Api.csproj"
     },
-    "Beer_StoreOrder.Infrastructure/1.0.0": {
+    "Beer_StoreOrder.Model/1.0.0": {
       "type": "project",
-      "path": "../Beer_StoreOrder.Model/Beer_StoreOrder.Infrastructure.csproj",
-      "msbuildProject": "../Beer_StoreOrder.Model/Beer_StoreOrder.Infrastructure.csproj"
+      "path": "../Beer_StoreOrder.Model/Beer_StoreOrder.Model.csproj",
+      "msbuildProject": "../Beer_StoreOrder.Model/Beer_StoreOrder.Model.csproj"
     },
     "Beer_StoreOrder.Service/1.0.0": {
       "type": "project",
@@ -12503,7 +12503,7 @@
     "net6.0": [
       "AutoFixture >= 4.18.0",
       "Beer_StoreOrder.Api >= 1.0.0",
-      "Beer_StoreOrder.Infrastructure >= 1.0.0",
+      "Beer_StoreOrder.Model >= 1.0.0",
       "Beer_StoreOrder.Service >= 1.0.0",
       "FluentAssertions >= 6.11.0",
       "Microsoft.AspNetCore.Mvc.NewtonsoftJson >= 6.0.16",
@@ -12554,8 +12554,8 @@
             "E:\\NewChanges_with_Task\\Beer_StoreOrder\\Beer_StoreOrder.API\\Beer_StoreOrder.Api.csproj": {
               "projectPath": "E:\\NewChanges_with_Task\\Beer_StoreOrder\\Beer_StoreOrder.API\\Beer_StoreOrder.Api.csproj"
             },
-            "E:\\NewChanges_with_Task\\Beer_StoreOrder\\Beer_StoreOrder.Model\\Beer_StoreOrder.Infrastructure.csproj": {
-              "projectPath": "E:\\NewChanges_with_Task\\Beer_StoreOrder\\Beer_StoreOrder.Model\\Beer_StoreOrder.Infrastructure.csproj"
+            "E:\\NewChanges_with_Task\\Beer_StoreOrder\\Beer_StoreOrder.Model\\Beer_StoreOrder.Model.csproj": {
+              "projectPath": "E:\\NewChanges_with_Task\\Beer_StoreOrder\\Beer_StoreOrder.Model\\Beer_StoreOrder.Model.csproj"
             },
             "E:\\NewChanges_with_Task\\Beer_StoreOrder\\Beer_StoreOrder.Service\\Beer_StoreOrder.Service.csproj": {
               "projectPath": "E:\\NewChanges_with_Task\\Beer_StoreOrder\\Beer_StoreOrder.Service\\Beer_StoreOrder.Service.csproj"

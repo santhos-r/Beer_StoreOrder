@@ -1,14 +1,9 @@
 ﻿using Moq;
-using Xunit;
 using Beer_StoreOrder.Api.Controllers;
-using Beer_StoreOrder.Service;
-using Beer_StoreOrder.UnitTest.MockData;
-using FluentAssertions;
 using AutoFixture;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Northwind.Models;
 using Beer_StoreOrder.Service.Services.Interface;
+using Beer_StoreOrder.Model;
 
 namespace Beer_StoreOrder.UnitTest.Controller
 {

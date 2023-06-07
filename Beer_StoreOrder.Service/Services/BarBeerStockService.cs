@@ -1,7 +1,7 @@
 ﻿using Beer_StoreOrder.Service.Services.Interface;
 using Microsoft.EntityFrameworkCore;
 using Northwind.Data;
-using Northwind.Models;
+using Beer_StoreOrder.Model;
 
 namespace Beer_StoreOrder.Service.Services
 {

@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Beer_StoreOrder.Model;
 using Microsoft.EntityFrameworkCore;
-using Northwind.Models;
 
 namespace Northwind.Data;
 
@@ -12,15 +10,15 @@ public partial class NorthwindContext : DbContext
     {
     }
 
-    public DbSet<Bar> Bars { get; set; }
+    public virtual DbSet<Bar> Bars { get; set; }
 
-    public DbSet<BarBeerStock> BarBeerStocks { get; set; }
+    public virtual DbSet<BarBeerStock> BarBeerStocks { get; set; }
 
-    public DbSet<BarBeerStockDetail> BarBeerStockDetails { get; set; }
+    public virtual DbSet<BarBeerStockDetail> BarBeerStockDetails { get; set; }
 
-    public DbSet<Beer> Beers { get; set; }
+    public virtual DbSet<Beer> Beers { get; set; }
 
-    public DbSet<Brewery> Breweries { get; set; }
+    public virtual DbSet<Brewery> Breweries { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

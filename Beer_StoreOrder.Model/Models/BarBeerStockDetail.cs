@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Northwind.Models;
-
-public class BarBeerStockDetail
+﻿namespace Beer_StoreOrder.Model;
+public partial class BarBeerStockDetail
 {
     public long? BarId { get; set; }
 

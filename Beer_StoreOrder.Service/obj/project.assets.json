@@ -1434,7 +1434,7 @@
           }
         }
       },
-      "Beer_StoreOrder.Infrastructure/1.0.0": {
+      "Beer_StoreOrder.Model/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
@@ -1444,10 +1444,10 @@
           "Microsoft.NET.Test.Sdk": "17.3.2"
         },
         "compile": {
-          "bin/placeholder/Beer_StoreOrder.Infrastructure.dll": {}
+          "bin/placeholder/Beer_StoreOrder.Model.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Beer_StoreOrder.Infrastructure.dll": {}
+          "bin/placeholder/Beer_StoreOrder.Model.dll": {}
         },
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
@@ -3719,15 +3719,15 @@
         "version.txt"
       ]
     },
-    "Beer_StoreOrder.Infrastructure/1.0.0": {
+    "Beer_StoreOrder.Model/1.0.0": {
       "type": "project",
-      "path": "../Beer_StoreOrder.Model/Beer_StoreOrder.Infrastructure.csproj",
-      "msbuildProject": "../Beer_StoreOrder.Model/Beer_StoreOrder.Infrastructure.csproj"
+      "path": "../Beer_StoreOrder.Model/Beer_StoreOrder.Model.csproj",
+      "msbuildProject": "../Beer_StoreOrder.Model/Beer_StoreOrder.Model.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "Beer_StoreOrder.Infrastructure >= 1.0.0",
+      "Beer_StoreOrder.Model >= 1.0.0",
       "Microsoft.AspNetCore.Mvc.NewtonsoftJson >= 6.0.16",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.5",
       "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.16",
@@ -3769,8 +3769,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "E:\\NewChanges_with_Task\\Beer_StoreOrder\\Beer_StoreOrder.Model\\Beer_StoreOrder.Infrastructure.csproj": {
-              "projectPath": "E:\\NewChanges_with_Task\\Beer_StoreOrder\\Beer_StoreOrder.Model\\Beer_StoreOrder.Infrastructure.csproj"
+            "E:\\NewChanges_with_Task\\Beer_StoreOrder\\Beer_StoreOrder.Model\\Beer_StoreOrder.Model.csproj": {
+              "projectPath": "E:\\NewChanges_with_Task\\Beer_StoreOrder\\Beer_StoreOrder.Model\\Beer_StoreOrder.Model.csproj"
             }
           }
         }

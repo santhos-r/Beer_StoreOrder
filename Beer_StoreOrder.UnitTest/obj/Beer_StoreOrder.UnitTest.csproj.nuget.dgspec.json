@@ -109,12 +109,12 @@
         }
       }
     },
-    "E:\\NewChanges_with_Task\\Beer_StoreOrder\\Beer_StoreOrder.Model\\Beer_StoreOrder.Infrastructure.csproj": {
+    "E:\\NewChanges_with_Task\\Beer_StoreOrder\\Beer_StoreOrder.Model\\Beer_StoreOrder.Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\NewChanges_with_Task\\Beer_StoreOrder\\Beer_StoreOrder.Model\\Beer_StoreOrder.Infrastructure.csproj",
-        "projectName": "Beer_StoreOrder.Infrastructure",
-        "projectPath": "E:\\NewChanges_with_Task\\Beer_StoreOrder\\Beer_StoreOrder.Model\\Beer_StoreOrder.Infrastructure.csproj",
+        "projectUniqueName": "E:\\NewChanges_with_Task\\Beer_StoreOrder\\Beer_StoreOrder.Model\\Beer_StoreOrder.Model.csproj",
+        "projectName": "Beer_StoreOrder.Model",
+        "projectPath": "E:\\NewChanges_with_Task\\Beer_StoreOrder\\Beer_StoreOrder.Model\\Beer_StoreOrder.Model.csproj",
         "packagesPath": "C:\\Users\\Vivi0\\.nuget\\packages\\",
         "outputPath": "E:\\NewChanges_with_Task\\Beer_StoreOrder\\Beer_StoreOrder.Model\\obj\\",
         "projectStyle": "PackageReference",
@@ -231,8 +231,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "E:\\NewChanges_with_Task\\Beer_StoreOrder\\Beer_StoreOrder.Model\\Beer_StoreOrder.Infrastructure.csproj": {
-                "projectPath": "E:\\NewChanges_with_Task\\Beer_StoreOrder\\Beer_StoreOrder.Model\\Beer_StoreOrder.Infrastructure.csproj"
+              "E:\\NewChanges_with_Task\\Beer_StoreOrder\\Beer_StoreOrder.Model\\Beer_StoreOrder.Model.csproj": {
+                "projectPath": "E:\\NewChanges_with_Task\\Beer_StoreOrder\\Beer_StoreOrder.Model\\Beer_StoreOrder.Model.csproj"
               }
             }
           }
@@ -331,8 +331,8 @@
               "E:\\NewChanges_with_Task\\Beer_StoreOrder\\Beer_StoreOrder.API\\Beer_StoreOrder.Api.csproj": {
                 "projectPath": "E:\\NewChanges_with_Task\\Beer_StoreOrder\\Beer_StoreOrder.API\\Beer_StoreOrder.Api.csproj"
               },
-              "E:\\NewChanges_with_Task\\Beer_StoreOrder\\Beer_StoreOrder.Model\\Beer_StoreOrder.Infrastructure.csproj": {
-                "projectPath": "E:\\NewChanges_with_Task\\Beer_StoreOrder\\Beer_StoreOrder.Model\\Beer_StoreOrder.Infrastructure.csproj"
+              "E:\\NewChanges_with_Task\\Beer_StoreOrder\\Beer_StoreOrder.Model\\Beer_StoreOrder.Model.csproj": {
+                "projectPath": "E:\\NewChanges_with_Task\\Beer_StoreOrder\\Beer_StoreOrder.Model\\Beer_StoreOrder.Model.csproj"
               },
               "E:\\NewChanges_with_Task\\Beer_StoreOrder\\Beer_StoreOrder.Service\\Beer_StoreOrder.Service.csproj": {
                 "projectPath": "E:\\NewChanges_with_Task\\Beer_StoreOrder\\Beer_StoreOrder.Service\\Beer_StoreOrder.Service.csproj"

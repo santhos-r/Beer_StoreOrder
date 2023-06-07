@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿namespace Beer_StoreOrder.Model;
 
-namespace Northwind.Models;
-
-public class Brewery
+public partial class Brewery
 {
     public long Id { get; set; }
 
     public string? Name { get; set; }
 
-    public ICollection<Beer> Beers { get; set; } = new List<Beer>();
+    public virtual ICollection<Beer> Beers { get; set; } = new List<Beer>();
 }

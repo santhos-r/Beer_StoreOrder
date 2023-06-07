@@ -1,16 +1,10 @@
 ﻿using AutoFixture;
 using Beer_StoreOrder.Api.Controllers;
-using Beer_StoreOrder.Service;
 using Beer_StoreOrder.Service.Services.Interface;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
-using Northwind.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Beer_StoreOrder.Model;
 
 namespace Beer_StoreOrder.UnitTest.Controller
 {

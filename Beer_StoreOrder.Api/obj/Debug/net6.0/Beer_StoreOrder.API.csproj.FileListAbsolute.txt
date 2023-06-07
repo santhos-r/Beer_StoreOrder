@@ -1195,16 +1195,16 @@ E:\New Changes with Task\Beer_StoreOrder\Beer_StoreOrder\Beer_StoreOrder.API\obj
 E:\New Changes with Task\Beer_StoreOrder\Beer_StoreOrder\Beer_StoreOrder.API\obj\Debug\net6.0\Beer_StoreOrder.Api.pdb
 E:\New Changes with Task\Beer_StoreOrder\Beer_StoreOrder\Beer_StoreOrder.API\obj\Debug\net6.0\Beer_StoreOrder.Api.genruntimeconfig.cache
 E:\New Changes with Task\Beer_StoreOrder\Beer_StoreOrder\Beer_StoreOrder.API\obj\Debug\net6.0\ref\Beer_StoreOrder.Api.dll
-E:\NewChanges_with_Task\Beer_StoreOrder\Beer_StoreOrder.API\bin\Debug\net6.0\testhost.exe
 E:\NewChanges_with_Task\Beer_StoreOrder\Beer_StoreOrder.API\bin\Debug\net6.0\testhost.dll
-E:\NewChanges_with_Task\Beer_StoreOrder\Beer_StoreOrder.API\bin\Debug\net6.0\appsettings.Development.json
-E:\NewChanges_with_Task\Beer_StoreOrder\Beer_StoreOrder.API\bin\Debug\net6.0\appsettings.json
 E:\NewChanges_with_Task\Beer_StoreOrder\Beer_StoreOrder.API\bin\Debug\net6.0\Beer_StoreOrder.Service.deps.json
 E:\NewChanges_with_Task\Beer_StoreOrder\Beer_StoreOrder.API\bin\Debug\net6.0\Beer_StoreOrder.Service.runtimeconfig.json
-E:\NewChanges_with_Task\Beer_StoreOrder\Beer_StoreOrder.API\bin\Debug\net6.0\Beer_StoreOrder.Infrastructure.deps.json
-E:\NewChanges_with_Task\Beer_StoreOrder\Beer_StoreOrder.API\bin\Debug\net6.0\Beer_StoreOrder.Infrastructure.runtimeconfig.json
-E:\NewChanges_with_Task\Beer_StoreOrder\Beer_StoreOrder.API\bin\Debug\net6.0\Beer_StoreOrder.Infrastructure.exe
+E:\NewChanges_with_Task\Beer_StoreOrder\Beer_StoreOrder.API\bin\Debug\net6.0\Beer_StoreOrder.Model.deps.json
+E:\NewChanges_with_Task\Beer_StoreOrder\Beer_StoreOrder.API\bin\Debug\net6.0\Beer_StoreOrder.Model.runtimeconfig.json
+E:\NewChanges_with_Task\Beer_StoreOrder\Beer_StoreOrder.API\bin\Debug\net6.0\Beer_StoreOrder.Model.exe
+E:\NewChanges_with_Task\Beer_StoreOrder\Beer_StoreOrder.API\bin\Debug\net6.0\testhost.exe
 E:\NewChanges_with_Task\Beer_StoreOrder\Beer_StoreOrder.API\bin\Debug\net6.0\Beer_StoreOrder.Service.exe
+E:\NewChanges_with_Task\Beer_StoreOrder\Beer_StoreOrder.API\bin\Debug\net6.0\appsettings.Development.json
+E:\NewChanges_with_Task\Beer_StoreOrder\Beer_StoreOrder.API\bin\Debug\net6.0\appsettings.json
 E:\NewChanges_with_Task\Beer_StoreOrder\Beer_StoreOrder.API\bin\Debug\net6.0\Beer_StoreOrder.Api.exe
 E:\NewChanges_with_Task\Beer_StoreOrder\Beer_StoreOrder.API\bin\Debug\net6.0\Beer_StoreOrder.Api.deps.json
 E:\NewChanges_with_Task\Beer_StoreOrder\Beer_StoreOrder.API\bin\Debug\net6.0\Beer_StoreOrder.Api.runtimeconfig.json
@@ -1569,10 +1569,10 @@ E:\NewChanges_with_Task\Beer_StoreOrder\Beer_StoreOrder.API\bin\Debug\net6.0\run
 E:\NewChanges_with_Task\Beer_StoreOrder\Beer_StoreOrder.API\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 E:\NewChanges_with_Task\Beer_StoreOrder\Beer_StoreOrder.API\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
 E:\NewChanges_with_Task\Beer_StoreOrder\Beer_StoreOrder.API\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
-E:\NewChanges_with_Task\Beer_StoreOrder\Beer_StoreOrder.API\bin\Debug\net6.0\Beer_StoreOrder.Infrastructure.dll
+E:\NewChanges_with_Task\Beer_StoreOrder\Beer_StoreOrder.API\bin\Debug\net6.0\Beer_StoreOrder.Model.dll
 E:\NewChanges_with_Task\Beer_StoreOrder\Beer_StoreOrder.API\bin\Debug\net6.0\Beer_StoreOrder.Service.dll
 E:\NewChanges_with_Task\Beer_StoreOrder\Beer_StoreOrder.API\bin\Debug\net6.0\Beer_StoreOrder.Service.pdb
-E:\NewChanges_with_Task\Beer_StoreOrder\Beer_StoreOrder.API\bin\Debug\net6.0\Beer_StoreOrder.Infrastructure.pdb
+E:\NewChanges_with_Task\Beer_StoreOrder\Beer_StoreOrder.API\bin\Debug\net6.0\Beer_StoreOrder.Model.pdb
 E:\NewChanges_with_Task\Beer_StoreOrder\Beer_StoreOrder.API\obj\Debug\net6.0\Beer_StoreOrder.Api.csproj.AssemblyReference.cache
 E:\NewChanges_with_Task\Beer_StoreOrder\Beer_StoreOrder.API\obj\Debug\net6.0\Beer_StoreOrder.Api.GeneratedMSBuildEditorConfig.editorconfig
 E:\NewChanges_with_Task\Beer_StoreOrder\Beer_StoreOrder.API\obj\Debug\net6.0\Beer_StoreOrder.Api.AssemblyInfoInputs.cache

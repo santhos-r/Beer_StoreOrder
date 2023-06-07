@@ -38,7 +38,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Beer_StoreOrder.API\Beer_StoreOrder.Api.csproj" />
-    <ProjectReference Include="..\Beer_StoreOrder.Model\Beer_StoreOrder.Infrastructure.csproj" />
+    <ProjectReference Include="..\Beer_StoreOrder.Model\Beer_StoreOrder.Model.csproj" />
     <ProjectReference Include="..\Beer_StoreOrder.Service\Beer_StoreOrder.Service.csproj" />
   </ItemGroup>
 

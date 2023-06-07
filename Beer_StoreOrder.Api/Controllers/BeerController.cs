@@ -1,8 +1,6 @@
 ﻿using Beer_StoreOrder.Service.Services.Interface;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Northwind.Models;
-
+using Beer_StoreOrder.Model;
 
 namespace Beer_StoreOrder.Api.Controllers
 {

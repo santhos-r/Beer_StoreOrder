@@ -2871,7 +2871,7 @@
           "System.Xml.ReaderWriter": "4.3.0"
         }
       },
-      "Beer_StoreOrder.Infrastructure/1.0.0": {
+      "Beer_StoreOrder.Model/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Mvc.NewtonsoftJson": "6.0.16",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.16",
@@ -2879,12 +2879,12 @@
           "Microsoft.NET.Test.Sdk": "17.3.2"
         },
         "runtime": {
-          "Beer_StoreOrder.Infrastructure.dll": {}
+          "Beer_StoreOrder.Model.dll": {}
         }
       },
       "Beer_StoreOrder.Service/1.0.0": {
         "dependencies": {
-          "Beer_StoreOrder.Infrastructure": "1.0.0",
+          "Beer_StoreOrder.Model": "1.0.0",
           "Microsoft.AspNetCore.Mvc.NewtonsoftJson": "6.0.16",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.16",
           "Microsoft.EntityFrameworkCore.Sqlite": "7.0.5",
@@ -4267,7 +4267,7 @@
       "path": "system.xml.xdocument/4.3.0",
       "hashPath": "system.xml.xdocument.4.3.0.nupkg.sha512"
     },
-    "Beer_StoreOrder.Infrastructure/1.0.0": {
+    "Beer_StoreOrder.Model/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

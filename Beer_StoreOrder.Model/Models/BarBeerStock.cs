@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Northwind.Models;
-
-public class BarBeerStock
+﻿namespace Beer_StoreOrder.Model;
+public partial class BarBeerStock
 {
     public long Id { get; set; }
 
@@ -13,7 +9,7 @@ public class BarBeerStock
 
     public long? BarId { get; set; }
 
-    public Bar? Bar { get; set; }
+    public virtual Bar? Bar { get; set; }
 
-    public Beer? Product { get; set; }
+    public virtual Beer? Product { get; set; }
 }
