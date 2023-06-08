@@ -16,44 +16,23 @@ namespace Beer_StoreOrder.Service.Services
         }
         async Task IBarBeerStockService.PostBarBeerStock(BarBeerStock barBeerStock)
         {
-            try
-            {
-                _context.BarBeerStocks.Add(barBeerStock);
-                await _context.SaveChangesAsync();
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
+            _context.BarBeerStocks.Add(barBeerStock);
+            await _context.SaveChangesAsync();
         }
         async Task<IEnumerable<Bar>> IBarBeerStockService.GetBarBeerStockDetailbyId(long barId)
         {
-            try
-            {
-                var bar = await _context.Bars
-                        .Include(e => e.BarBeerStocks)
-                        .Where(b => b.Id == barId)
-                        .ToListAsync();
-                return bar;
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
+            var bar = await _context.Bars
+                    .Include(e => e.BarBeerStocks)
+                    .Where(b => b.Id == barId)
+                    .ToListAsync();
+            return bar;
         }
         async Task<IEnumerable<Bar>> IBarBeerStockService.GetBarBeerStockDetail()
         {
-            try
-            {
-                var bar = await _context.Bars
-               .Include(e => e.BarBeerStocks)
-               .ToListAsync();
-                return bar;
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
+            var bar = await _context.Bars
+           .Include(e => e.BarBeerStocks)
+           .ToListAsync();
+            return bar;
         }
     }
 }

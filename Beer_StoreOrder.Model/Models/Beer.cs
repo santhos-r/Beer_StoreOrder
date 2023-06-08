@@ -1,5 +1,5 @@
 ﻿namespace Beer_StoreOrder.Model.Models;
-public partial class Beer
+public class Beer
 {
     public long Id { get; set; }
 
@@ -9,7 +9,7 @@ public partial class Beer
 
     public long? BreweryId { get; set; }
 
-    public virtual ICollection<BarBeerStock> BarBeerStocks { get; set; } = new List<BarBeerStock>();
+    public ICollection<BarBeerStock> BarBeerStocks { get; set; } = new List<BarBeerStock>();
 
-    public virtual Brewery? Brewery { get; set; }
+    public Brewery? Brewery { get; set; }
 }

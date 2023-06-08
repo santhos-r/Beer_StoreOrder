@@ -8,12 +8,14 @@ namespace Beer_StoreOrder.Api.Controllers
     [ApiController]
     public class BreweryBeerController : ControllerBase
     {
+        #region "Declaration"
         private readonly IBreweryBeerService _storeService;
 
         public BreweryBeerController(IBreweryBeerService storeService)
         {
             _storeService = storeService;
         }
+        #endregion
 
         #region "POST: api/BreweryBeer"
         // Adding Brewery Bar data in the Bar Table

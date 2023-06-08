@@ -1,5 +1,5 @@
 ﻿namespace Beer_StoreOrder.Model.Models;
-public partial class BarBeerStockDetail
+public class BarBeerStockDetail
 {
     public long? BarId { get; set; }
 

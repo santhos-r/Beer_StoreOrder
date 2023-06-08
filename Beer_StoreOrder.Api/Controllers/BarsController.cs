@@ -9,12 +9,14 @@ namespace Beer_StoreOrder.Api.Controllers
     [ApiController]
     public class BarsController : ControllerBase
     {
+        #region "Declaration"
         private readonly IBarService _storeService;
 
         public BarsController(IBarService storeService)
         {
             _storeService = storeService;
         }
+        #endregion 
 
         #region "POST /bar"
         // Adding Bars data in the Bars Table
@@ -105,9 +107,9 @@ namespace Beer_StoreOrder.Api.Controllers
                     throw new ApplicationException("ID Not Found");
                 return result;
             }
-            catch (DbUpdateException)
+            catch (Exception ex)
             {
-                throw;
+                throw new Exception(ex.Message);
             }
         }
         #endregion

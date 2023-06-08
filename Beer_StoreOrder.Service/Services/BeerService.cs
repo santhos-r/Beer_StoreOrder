@@ -21,56 +21,28 @@ namespace Beer_StoreOrder.Service.Services
         }
         async Task IBeerService.PostBeer(Beer beer)
         {
-            try
-            {
-                _context.Beers.Add(beer);
-                await _context.SaveChangesAsync();               
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
+            _context.Beers.Add(beer);
+            await _context.SaveChangesAsync();
         }
         async Task IBeerService.PutBeer(long id, Beer beer)
         {
-            try
-            {
-                _context.Entry(beer).State = EntityState.Modified;
-                await _context.SaveChangesAsync();
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
+            _context.Entry(beer).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
         }
         async Task<IEnumerable<Beer>> IBeerService.GetBeer(double gtAlcoholByVolume, double ltAlcoholByVolume)
         {
-            try
-            {
-                var query = _context.Beers.AsQueryable();
-                if (gtAlcoholByVolume > 0)
-                    query = query.Where(t => t.PercentageAlcoholByVolume >= gtAlcoholByVolume);
-                if (ltAlcoholByVolume > 0)
-                    query = query.Where(p => p.PercentageAlcoholByVolume <= ltAlcoholByVolume);
-                return await query.ToListAsync();
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
+            var query = _context.Beers.AsQueryable();
+            if (gtAlcoholByVolume > 0)
+                query = query.Where(t => t.PercentageAlcoholByVolume >= gtAlcoholByVolume);
+            if (ltAlcoholByVolume > 0)
+                query = query.Where(p => p.PercentageAlcoholByVolume <= ltAlcoholByVolume);
+            return await query.ToListAsync();
         }
 
         async Task<ActionResult<Beer>> IBeerService.GetBeerbyId(long id)
         {
-            try
-            {
-                var beer = await _context.Beers.FindAsync(id);
-                return beer;
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
+            var beer = await _context.Beers.FindAsync(id);
+            return beer;
         }
     }
 }

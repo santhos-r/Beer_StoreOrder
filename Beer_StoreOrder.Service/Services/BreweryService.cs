@@ -23,55 +23,26 @@ namespace Beer_StoreOrder.Service.Services
 
         async Task IBreweryService.PostBrewery(Brewery brewery)
         {
-            try
-            {
-                _context.Breweries.Add(brewery);
-                await _context.SaveChangesAsync();
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
+            _context.Breweries.Add(brewery);
+            await _context.SaveChangesAsync();
         }
         async Task IBreweryService.PutBrewery(long id, Brewery brewery)
         {
-            try
-            {
-                _context.Entry(brewery).State = EntityState.Modified;
-                await _context.SaveChangesAsync();
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
+            _context.Entry(brewery).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
         }
 
         async Task<IEnumerable<Brewery>> IBreweryService.GetBrewery()
         {
-            try
-            {
-                var brewery = _context.Breweries.ToList();
-                return brewery;
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
+            var brewery = _context.Breweries.ToList();
+            return brewery;
         }
 
         async Task<ActionResult<Brewery>> IBreweryService.GetBrewerybyId(long id)
         {
-            try
-            {
-                var brewery = await _context.Breweries.FindAsync(id);
-                return brewery;
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
+            var brewery = await _context.Breweries.FindAsync(id);
+            return brewery;
         }
-
         #endregion
     }
 }

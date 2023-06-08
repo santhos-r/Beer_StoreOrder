@@ -21,52 +21,24 @@ namespace Beer_StoreOrder.Service.Services
         }
         async Task IBarService.PostBar(Bar bar)
         {
-            try
-            {
-                _context.Bars.Add(bar);
-                await _context.SaveChangesAsync();
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
+            _context.Bars.Add(bar);
+            await _context.SaveChangesAsync();
         }
         async Task IBarService.PutBar(long id, Bar bar)
         {
-            try
-            {
-                _context.Entry(bar).State = EntityState.Modified;
-                await _context.SaveChangesAsync();
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
+            _context.Entry(bar).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
         }
         async Task<IEnumerable<Bar>> IBarService.GetBars()
         {
-            try
-            {
-                var bar = await _context.Bars.ToListAsync();
-                return bar;
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
+            var bar = await _context.Bars.ToListAsync();
+            return bar;
         }
 
         async Task<ActionResult<Bar>> IBarService.GetBarbyId(long id)
         {
-            try
-            {
-                var bar = await _context.Bars.FindAsync(id);
-                return bar;
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
+            var bar = await _context.Bars.FindAsync(id);
+            return bar;
         }
     }
 }

@@ -30,11 +30,7 @@ public class ExceptionHandling
     {
         context.Response.ContentType = "application/json";
         var response = context.Response;
-
-        var errorResponse = new ErrorResponse
-        {
-            
-        };
+        var errorResponse = new ErrorResponse();       
         switch (exception)
         {
             case ApplicationException ex:    
