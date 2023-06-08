@@ -16,7 +16,7 @@ namespace Beer_StoreOrder.Api.Controllers
         }
         #endregion
 
-        #region "POST: api/brewery"
+        #region "POST: /brewery"
         // Adding Brewery data in the Brewery Table
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
@@ -46,7 +46,7 @@ namespace Beer_StoreOrder.Api.Controllers
         }
         #endregion
 
-        #region "PUT: api/Breweries/5"
+        #region "PUT: /brewery/{id}"
         // Updating Brewery data in the Brewery Table
         [HttpPut("{id:int}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -74,7 +74,7 @@ namespace Beer_StoreOrder.Api.Controllers
         }
         #endregion
 
-        #region "GET: GET /brewery"
+        #region "GET: /brewery"
         // Getting Brewery data in the Brewery Table
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

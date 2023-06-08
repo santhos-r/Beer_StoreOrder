@@ -20,7 +20,6 @@ namespace Beer_StoreOrder.UnitTest.Controller
             _sut = new BarsController(_serviceMock.Object);
         }
 
-
         /// <summary>
         /// Unit Test for GetBars
         /// </summary>
@@ -44,7 +43,6 @@ namespace Beer_StoreOrder.UnitTest.Controller
             Assert.Equal(StatusCodes.Status200OK, 200);
         }
 
-
         /// <summary>
         /// Unit Test for GetBars
         /// </summary>
@@ -65,9 +63,7 @@ namespace Beer_StoreOrder.UnitTest.Controller
             //Assert            
             Assert.Null(result);
             Assert.Equal(StatusCodes.Status404NotFound, 404);
-
         }
-
 
         /// <summary>
         /// Unit Test for PostBar
@@ -90,7 +86,6 @@ namespace Beer_StoreOrder.UnitTest.Controller
             Assert.NotNull(result);
             Assert.Equal(StatusCodes.Status201Created, 201);
         }
-
 
         /// <summary>
         /// Unit Test for PutBar
@@ -122,12 +117,7 @@ namespace Beer_StoreOrder.UnitTest.Controller
                 //Assert  
                 if (ex.Message == "ID Not Found")
                     Assert.Equal(StatusCodes.Status204NoContent, 204);
-
             }
-
         }
-
-
-
     }
 }

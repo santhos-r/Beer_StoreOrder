@@ -9,7 +9,6 @@ public partial class NorthwindContext : DbContext
         : base(options)
     {
     }
-
     public virtual DbSet<Bar> Bars { get; set; }
 
     public virtual DbSet<BarBeerStock> BarBeerStocks { get; set; }
@@ -77,6 +76,5 @@ public partial class NorthwindContext : DbContext
 
         OnModelCreatingPartial(modelBuilder);
     }
-
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 }

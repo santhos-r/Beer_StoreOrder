@@ -17,7 +17,7 @@ namespace Beer_StoreOrder.Api.Controllers
         }
         #endregion
 
-        #region "POST: api/BreweryBeer"
+        #region "POST: /brewery/beer"
         // Adding Brewery Bar data in the Bar Table
         [HttpPost("beer")]
         [ProducesResponseType(StatusCodes.Status201Created)]

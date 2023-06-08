@@ -10,7 +10,6 @@ namespace Beer_StoreOrder.UnitTest.Controller
 {
     public class TestBarBeerStocksController
     {
-
         private readonly IFixture _fixture;
         private readonly Mock<IBarBeerStockService> _serviceMock;
         private readonly BarBeerStocksController _sut;
