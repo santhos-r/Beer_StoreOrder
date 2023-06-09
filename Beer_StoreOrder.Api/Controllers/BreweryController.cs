@@ -42,7 +42,6 @@ namespace Beer_StoreOrder.Api.Controllers
             {
                throw new Exception(ex.Message);
             }
-
         }
         #endregion
 
@@ -51,7 +50,6 @@ namespace Beer_StoreOrder.Api.Controllers
         [HttpPut("{id:int}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-
         public async Task<IActionResult> PutBrewery(long id, Brewery brewery)
         {
             try

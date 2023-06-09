@@ -10,21 +10,19 @@ namespace Beer_StoreOrder.UnitTest.Controller
 {
     public class TestBreweryController
     {
+        #region "Declaration""
         private readonly IFixture _fixture;
         private readonly Mock<IBreweryService> _serviceMock;
         private readonly BreweryController _sut;
-
         public TestBreweryController()
         {
             _fixture = new Fixture();
             _serviceMock = _fixture.Freeze<Mock<IBreweryService>>();
             _sut = new BreweryController(_serviceMock.Object);
         }
+        #endregion
 
-        /// <summary>
-        /// Unit Test for GetBrewery
-        /// </summary>
-        /// <returns>200 status code when data found</returns>
+        #region "UnitTest for GetBrewery_ShouldReturn200StatusCode_WhenDataFound"
         [Fact]
         public async Task GetBrewery_ShouldReturn200StatusCode_WhenDataFound()
         {
@@ -43,11 +41,9 @@ namespace Beer_StoreOrder.UnitTest.Controller
             Assert.Equal(BreweryMock.Count(), returnValue.Count());
             Assert.Equal(StatusCodes.Status200OK, 200);
         }
+        #endregion
 
-        /// <summary>
-        /// Unit Test for GetBrewery
-        /// </summary>
-        /// <returns>404 status code When there was no result Found</returns>
+        #region "UnitTest for GetBrewery_ShouldReturn404StatusCode_WhenThereAreNoResultFound" 
         [Fact]
         public async Task GetBrewery_ShouldReturn404StatusCode_WhenThereAreNoResultFound()
         {
@@ -64,13 +60,10 @@ namespace Beer_StoreOrder.UnitTest.Controller
             //Assert            
             Assert.Null(result);
             Assert.Equal(StatusCodes.Status404NotFound, 404);
-
         }
+        #endregion
 
-        /// <summary>
-        /// Unit Test for PostBrewery
-        /// </summary>
-        /// <returns>201 status code When adding new item</returns>
+        #region "UnitTest for PostBrewery_ShouldReturnStatus201Created_WhenAddingNewItem"
         [Fact]
         public async Task PostBrewery_ShouldReturnStatus201Created_WhenAddingNewItem()
         {
@@ -88,12 +81,9 @@ namespace Beer_StoreOrder.UnitTest.Controller
             Assert.NotNull(result);
             Assert.Equal(StatusCodes.Status201Created, 201);
         }
+        #endregion
 
-
-        /// <summary>
-        /// Unit Test for PutBeer
-        /// </summary>
-        /// <returns>204 status code When updating an item</returns>
+        #region "UnitTest for PutBrewery_ShouldReturnStatus204NoContent_WhenUpdatingItem"
         [Theory]
         [InlineData(500)]
         public async Task PutBrewery_ShouldReturnStatus204NoContent_WhenUpdatingItem(long ID)
@@ -121,7 +111,7 @@ namespace Beer_StoreOrder.UnitTest.Controller
                 if (ex.Message == "ID Not Found")
                     Assert.Equal(StatusCodes.Status204NoContent, 204);
             }
-
         }
+        #endregion
     }
 }

@@ -9,7 +9,6 @@ namespace Beer_StoreOrder.Api.Controllers
     {
         #region "Declaration"
         private readonly IBarBeerStockService _storeService;
-
         public BarBeerStocksController(IBarBeerStockService storeService)
         {
             _storeService = storeService;

@@ -10,6 +10,6 @@ public class Beer
     public long? BreweryId { get; set; }
 
     public ICollection<BarBeerStock> BarBeerStocks { get; set; } = new List<BarBeerStock>();
-
+    
     public Brewery? Brewery { get; set; }
 }

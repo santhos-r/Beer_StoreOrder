@@ -10,21 +10,19 @@ namespace Beer_StoreOrder.UnitTest.Controller
 {
     public class TestBreweryBeerController
     {
+        #region "Declaration"
         private readonly IFixture _fixture;
         private readonly Mock<IBreweryBeerService> _serviceMock;
         private readonly BreweryBeerController _sut;
-
         public TestBreweryBeerController()
         {
             _fixture = new Fixture();
             _serviceMock = _fixture.Freeze<Mock<IBreweryBeerService>>();
             _sut = new BreweryBeerController(_serviceMock.Object);
         }
+        #endregion
 
-        /// <summary>
-        /// Unit Test for GetBreweryBeer
-        /// </summary>
-        /// <returns>200 status code when data found</returns>
+        #region "UnitTest for GetBreweryBeer_ShouldReturn200StatusCode_WhenDataFound"
         [Fact]
         public async Task GetBreweryBeer_ShouldReturn200StatusCode_WhenDataFound()
         {
@@ -43,11 +41,9 @@ namespace Beer_StoreOrder.UnitTest.Controller
             Assert.Equal(BreweryBeerMock.Count(), returnValue.Count());
             Assert.Equal(StatusCodes.Status200OK, 200);
         }
+        #endregion
 
-        /// <summary>
-        /// Unit Test for GetBreweryBeer
-        /// </summary>
-        /// <returns>404 status code When there was no result Found</returns>
+        #region "UnitTest for GetBreweryBeer_ShouldReturn404StatusCode_WhenThereAreNoResultFound"
         [Fact]
         public async Task GetBreweryBeer_ShouldReturn404StatusCode_WhenThereAreNoResultFound()
         {
@@ -64,14 +60,10 @@ namespace Beer_StoreOrder.UnitTest.Controller
             //Assert            
             Assert.Null(result);
             Assert.Equal(StatusCodes.Status404NotFound, 404);
-
         }
+        #endregion
 
-
-        /// <summary>
-        /// Unit Test for PostBreweryBeer
-        /// </summary>
-        /// <returns>201 status code When adding new item</returns>
+        #region "UnitTest for PostBreweryBeer_ShouldReturnStatus201Created_WhenAddingNewItem"
         [Fact]
         public async Task PostBreweryBeer_ShouldReturnStatus201Created_WhenAddingNewItem()
         {
@@ -89,5 +81,6 @@ namespace Beer_StoreOrder.UnitTest.Controller
             Assert.NotNull(result);
             Assert.Equal(StatusCodes.Status201Created, 201);
         }
+        #endregion
     }
 }

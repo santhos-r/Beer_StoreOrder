@@ -15,27 +15,27 @@ namespace Beer_StoreOrder.Service.Services
         {
             _context = context;
         }
-        bool IBarService.BarExists(long id)
+        public bool BarExists(long id)
         {
             return (_context.Bars?.Any(e => e.Id == id)).GetValueOrDefault();
         }
-        async Task IBarService.PostBar(Bar bar)
+        public async Task PostBar(Bar bar)
         {
             _context.Bars.Add(bar);
             await _context.SaveChangesAsync();
         }
-        async Task IBarService.PutBar(long id, Bar bar)
+        public async Task PutBar(long id, Bar bar)
         {
             _context.Entry(bar).State = EntityState.Modified;
             await _context.SaveChangesAsync();
         }
-        async Task<IEnumerable<Bar>> IBarService.GetBars()
+        public async Task<IEnumerable<Bar>> GetBars()
         {
             var bar = await _context.Bars.ToListAsync();
             return bar;
         }
 
-        async Task<ActionResult<Bar>> IBarService.GetBarbyId(long id)
+        public async Task<ActionResult<Bar>> GetBarbyId(long id)
         {
             var bar = await _context.Bars.FindAsync(id);
             return bar;

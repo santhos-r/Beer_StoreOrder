@@ -15,21 +15,21 @@ namespace Beer_StoreOrder.Service.Services
         {
             _context = context;
         }
-        bool IBeerService.BeerExists(long id)
+        public bool BeerExists(long id)
         {
             return (_context.Beers?.Any(e => e.Id == id)).GetValueOrDefault();
         }
-        async Task IBeerService.PostBeer(Beer beer)
+        public async Task PostBeer(Beer beer)
         {
             _context.Beers.Add(beer);
             await _context.SaveChangesAsync();
         }
-        async Task IBeerService.PutBeer(long id, Beer beer)
+        public async Task PutBeer(long id, Beer beer)
         {
             _context.Entry(beer).State = EntityState.Modified;
             await _context.SaveChangesAsync();
         }
-        async Task<IEnumerable<Beer>> IBeerService.GetBeer(double gtAlcoholByVolume, double ltAlcoholByVolume)
+        public async Task<IEnumerable<Beer>> GetBeer(double gtAlcoholByVolume, double ltAlcoholByVolume)
         {
             var query = _context.Beers.AsQueryable();
             if (gtAlcoholByVolume > 0)
@@ -39,7 +39,7 @@ namespace Beer_StoreOrder.Service.Services
             return await query.ToListAsync();
         }
 
-        async Task<ActionResult<Beer>> IBeerService.GetBeerbyId(long id)
+        public async Task<ActionResult<Beer>> GetBeerbyId(long id)
         {
             var beer = await _context.Beers.FindAsync(id);
             return beer;

@@ -14,12 +14,12 @@ namespace Beer_StoreOrder.Service.Services
             _context = context;
         }
 
-        async Task IBreweryBeerService.PostBreweryBeer(Beer beer)
+        public async Task PostBreweryBeer(Beer beer)
         {
             _context.Beers.Add(beer);
             await _context.SaveChangesAsync();
         }
-        async Task<IEnumerable<Brewery>> IBreweryBeerService.GetBreweryBeerbyId(long breweryId)
+        public async Task<IEnumerable<Brewery>> GetBreweryBeerbyId(long breweryId)
         {
             var result = _context.Breweries
                                 .Include(e => e.Beers)
@@ -27,7 +27,7 @@ namespace Beer_StoreOrder.Service.Services
                                 .ToList();
             return result;
         }
-        async Task<IEnumerable<Brewery>> IBreweryBeerService.GetBreweryBeer()
+        public async Task<IEnumerable<Brewery>> GetBreweryBeer()
         {
             var bar = await _context.Breweries
                     .Include(e => e.Beers)

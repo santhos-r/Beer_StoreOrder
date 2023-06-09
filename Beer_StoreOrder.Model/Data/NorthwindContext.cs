@@ -5,6 +5,10 @@ namespace Beer_StoreOrder.Model.Data;
 
 public partial class NorthwindContext : DbContext
 {
+    public NorthwindContext()
+    {
+    }
+
     public NorthwindContext(DbContextOptions<NorthwindContext> options)
         : base(options)
     {

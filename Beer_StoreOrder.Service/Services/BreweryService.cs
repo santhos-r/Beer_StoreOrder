@@ -14,31 +14,31 @@ namespace Beer_StoreOrder.Service.Services
         {
             _context = context;
         }
-        bool IBreweryService.BreweryExists(long id)
+        public bool BreweryExists(long id)
         {
             return (_context.Breweries?.Any(e => e.Id == id)).GetValueOrDefault();
         }
 
         #region "Brewery"
 
-        async Task IBreweryService.PostBrewery(Brewery brewery)
+        public async Task PostBrewery(Brewery brewery)
         {
             _context.Breweries.Add(brewery);
             await _context.SaveChangesAsync();
         }
-        async Task IBreweryService.PutBrewery(long id, Brewery brewery)
+        public async Task PutBrewery(long id, Brewery brewery)
         {
             _context.Entry(brewery).State = EntityState.Modified;
             await _context.SaveChangesAsync();
         }
 
-        async Task<IEnumerable<Brewery>> IBreweryService.GetBrewery()
+        public async Task<IEnumerable<Brewery>> GetBrewery()
         {
             var brewery = _context.Breweries.ToList();
             return brewery;
         }
 
-        async Task<ActionResult<Brewery>> IBreweryService.GetBrewerybyId(long id)
+        public async Task<ActionResult<Brewery>> GetBrewerybyId(long id)
         {
             var brewery = await _context.Breweries.FindAsync(id);
             return brewery;
