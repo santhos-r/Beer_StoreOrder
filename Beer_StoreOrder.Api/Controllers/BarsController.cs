@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Beer_StoreOrder.Model.Models;
+using Microsoft.Build.Framework;
+
 
 namespace Beer_StoreOrder.Api.Controllers
 {
@@ -10,10 +12,10 @@ namespace Beer_StoreOrder.Api.Controllers
     public class BarsController : ControllerBase
     {
         #region "Declaration"
-        private readonly IBarService _storeService;
-        public BarsController(IBarService storeService)
+        private readonly IBarService _barService;
+        public BarsController(IBarService barService)
         {
-            _storeService = storeService;
+            _barService = barService;
         }
         #endregion 
 
@@ -22,102 +24,83 @@ namespace Beer_StoreOrder.Api.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<Bar>> PostBar(Bar bar)
+        [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> AddBar(Bar bar)
         {
-            try
+            if (bar.Id <= 0)
             {
-                if(bar.Id==0)
-                {
-                    return BadRequest();
-                }
-                else if (BarExists(bar.Id))
-                {
-                    throw new ApplicationException("DuplicatedID Found");
-                }
-                await _storeService.PostBar(bar);
-                return CreatedAtAction("PostBar", new { id = bar.Id }, bar);
+                throw new ApplicationException("Bad Request");
             }
-            catch (Exception ex)
-            {               
-                throw new Exception(ex.Message);                
+            else if (BarExists(bar.Id))
+            {
+                throw new ApplicationException("Same Id already exists");
             }
+            var result = await _barService.AddBar(bar);
+            return CreatedAtAction("AddBar", new { id = bar.Id }, result);
         }
         #endregion
 
         #region "PUT /bar/{id}"
         // Updating Bars data in the Bars Table
         [HttpPut("{id:int}")]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> PutBar(long id, Bar bar)
+        public async Task<IActionResult> UpdateBar(long id, Bar bar)
         {
-            try
+            if (!BarExists(id))
             {
-                if (id != bar.Id)
-                {
-                    throw new ApplicationException("ID Mismatching");
-                }
-                else if (!BarExists(id))
-                {
-                    throw new ApplicationException("ID Not Found");
-                }
-                await _storeService.PutBar(id, bar);
-                return CreatedAtAction("PutBar", new { id = bar.Id }, bar);
+                throw new ApplicationException("ID doesnot exists");
             }
-            catch (Exception ex)
+            else if (id != bar.Id)
             {
-                throw new Exception(ex.Message);
+                throw new ApplicationException("ID mismatch request");
             }
+            await _barService.UpdateBar(id, bar);
+            return Ok(bar);
         }
+
         #endregion
 
         #region "GET /bar"
         // Getting Bars data in the Bars Table        
         [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IEnumerable<Bar>> GetBars()
+        public async Task<IActionResult> GetBars()
         {
-            try
-            {
-                var result = await _storeService.GetBars();
-                return result;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            var result = await _barService.GetBars();
+            if (result.Count() == 0)
+                throw new ApplicationException("No results found");
+            return Ok(result);
         }
         #endregion
 
         #region "GET /bar/{id}"
         // Getting Bars data in the Bars Table from ID
         [HttpGet("{id:int}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<Bar>> GetBarbyId(long id)
+        public async Task<IActionResult> GetBarbyId(long id)
         {
-            try
-            {
-                var result = await _storeService.GetBarbyId(id);
-                if (result.Value == null)
-                    throw new ApplicationException("ID Not Found");
-                return result;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            var result = await _barService.GetBarbyId(id);
+            if (result.Value == null)
+                throw new ApplicationException("ID doesnot exists");
+            return Ok(result.Value);
         }
         #endregion
 
         #region "Duplicate Validation"
         private bool BarExists(long id)
         {
-            var result = _storeService.BarExists(id);
+            var result = _barService.BarExists(id);
             return result;
         }
         #endregion
     }
 }
+
+

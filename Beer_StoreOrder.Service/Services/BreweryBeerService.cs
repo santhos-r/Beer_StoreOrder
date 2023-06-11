@@ -7,29 +7,27 @@ namespace Beer_StoreOrder.Service.Services
 {
     public class BreweryBeerService : IBreweryBeerService
     {
-        private readonly NorthwindContext _context;
+        private readonly Beer_StoreOrderContext _dbContext;
 
-        public BreweryBeerService(NorthwindContext context)
+        public BreweryBeerService(Beer_StoreOrderContext context)
         {
-            _context = context;
+            _dbContext = context;
         }
-
-        public async Task PostBreweryBeer(Beer beer)
+        public async Task<Beer> AddBreweryBeer(Beer beer)
         {
-            _context.Beers.Add(beer);
-            await _context.SaveChangesAsync();
+            var result = _dbContext.Beers.Add(beer);
+            await _dbContext.SaveChangesAsync();
+            return result.Entity;
         }
         public async Task<IEnumerable<Brewery>> GetBreweryBeerbyId(long breweryId)
         {
-            var result = _context.Breweries
-                                .Include(e => e.Beers)
-                                .Where(p => p.Id == breweryId)
-                                .ToList();
-            return result;
+            return await _dbContext.Breweries.Include(e => e.Beers)
+                                           .Where(p => p.Id == breweryId)
+                                           .ToListAsync();
         }
         public async Task<IEnumerable<Brewery>> GetBreweryBeer()
         {
-            var bar = await _context.Breweries
+            var bar = await _dbContext.Breweries
                     .Include(e => e.Beers)
                     .ToListAsync();
             return bar;

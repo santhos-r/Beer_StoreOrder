@@ -13,14 +13,14 @@ namespace Beer_StoreOrder.UnitTest.Service
 
         #region "Declaration"
         private IFixture _fixture;
-        protected readonly NorthwindContext _dbContext;
+        protected readonly Beer_StoreOrderContext _dbContext;
         public TestBreweryBeerService()
         {
             _fixture = new Fixture();
-            var options = new DbContextOptionsBuilder<NorthwindContext>()
+            var options = new DbContextOptionsBuilder<Beer_StoreOrderContext>()
            .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
             .Options;
-            _dbContext = new NorthwindContext(options);
+            _dbContext = new Beer_StoreOrderContext(options);
             _dbContext.Database.EnsureCreated();
         }
         #endregion
@@ -49,9 +49,9 @@ namespace Beer_StoreOrder.UnitTest.Service
         }
         #endregion
 
-        #region "UnitTest for PostBreweryBeer_ShouldReturnStatus201Created_WhenAddingNewItem"
+        #region "UnitTest for AddBreweryBeer_ShouldReturnStatus201Created_WhenAddingNewItem"
         [Fact]
-        public async Task PostBreweryBeer_ShouldReturnStatus201Created_WhenAddingNewItem()
+        public async Task AddBreweryBeer_ShouldReturnStatus201Created_WhenAddingNewItem()
         {
             // Arrange
             _fixture.Behaviors.OfType<ThrowingRecursionBehavior>().ToList().ForEach(b => _fixture.Behaviors.Remove(b));
@@ -65,7 +65,7 @@ namespace Beer_StoreOrder.UnitTest.Service
             var _sut = new BreweryBeerService(_dbContext);
 
             /// Act
-            await _sut.PostBreweryBeer(BreweryBeerMock);
+            await _sut.AddBreweryBeer(BreweryBeerMock);
 
             ///Assert
             int expectedRecordCount = (AllBreweryBeerMock.Count() + 1);

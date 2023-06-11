@@ -5,8 +5,8 @@ namespace Beer_StoreOrder.Service.Services.Interface
 {
     public interface IBreweryService
     {
-        Task PostBrewery(Brewery brewery);
-        Task PutBrewery(long id, Brewery brewery);
+        Task<Brewery> AddBrewery(Brewery brewery);
+        Task UpdateBrewery(long id, Brewery brewery);
         Task<IEnumerable<Brewery>> GetBrewery();
         Task<ActionResult<Brewery>> GetBrewerybyId(long id);
         bool BreweryExists(long id);

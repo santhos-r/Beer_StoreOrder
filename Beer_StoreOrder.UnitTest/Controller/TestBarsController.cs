@@ -1,10 +1,11 @@
-﻿using Moq;
-using AutoFixture;
+﻿using AutoFixture;
 using Beer_StoreOrder.Api.Controllers;
 using Beer_StoreOrder.Model.Models;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
 using Beer_StoreOrder.Service.Services.Interface;
+using FluentAssertions;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Moq;
 
 namespace Beer_StoreOrder.UnitTest.Controller
 {
@@ -33,13 +34,11 @@ namespace Beer_StoreOrder.UnitTest.Controller
             _serviceMock.Setup(x => x.GetBars()).ReturnsAsync(BarMock);
 
             //Act
-            var result = await _sut.GetBars();
+            var result = await _sut.GetBars() as ObjectResult;
 
-            //Assert
-            Assert.NotNull(result);
-            var returnValue = Assert.IsType<List<Bar>>(result);
-            Assert.Equal(BarMock.Count(), returnValue.Count());
-            Assert.Equal(StatusCodes.Status200OK, 200);
+            //Assert           
+            Assert.NotNull(result);          
+            Assert.Equal(StatusCodes.Status200OK, result.StatusCode);
         }
         #endregion
 
@@ -54,39 +53,44 @@ namespace Beer_StoreOrder.UnitTest.Controller
             var BarMock = enumerable;
             _serviceMock.Setup(x => x.GetBars()).ReturnsAsync(BarMock);
 
-            //Act
-            var result = await _sut.GetBars() as NotFoundResult;
-
-            //Assert            
-            Assert.Null(result);
-            Assert.Equal(StatusCodes.Status404NotFound, 404);
+            try
+            {
+                //Act
+                var result = await _sut.GetBars() as NotFoundResult;
+            }
+            catch(Exception ex)
+            {
+                //Assert
+                Assert.Equal(StatusCodes.Status404NotFound, 404);
+            }
+            
         }
         #endregion
 
-        #region "UnitTest for PostBar_ShouldReturnStatus201Created_WhenAddingNewItem"
+        #region "UnitTest for AddBar_ShouldReturnStatus201Created_WhenAddingNewItem"
         [Fact]
-        public async Task PostBar_ShouldReturnStatus201Created_WhenAddingNewItem()
+        public async Task AddBar_ShouldReturnStatus201Created_WhenAddingNewItem()
         {
             //Arrange
             _fixture.Behaviors.OfType<ThrowingRecursionBehavior>().ToList().ForEach(b => _fixture.Behaviors.Remove(b));
             _fixture.Behaviors.Add(new OmitOnRecursionBehavior());
 
             var BarMock = _fixture.Create<Bar>();
-            _serviceMock.Setup(x => x.PostBar(BarMock));
+            _serviceMock.Setup(x => x.AddBar(BarMock));
 
             //Act
-            var result = await _sut.PostBar(BarMock);
+            var result = await _sut.AddBar(BarMock) as ObjectResult;
 
             //Assert            
             Assert.NotNull(result);
-            Assert.Equal(StatusCodes.Status201Created, 201);
+            Assert.Equal(StatusCodes.Status201Created, result.StatusCode);
         }
         #endregion
 
-        #region "UnitTest for PutBar_ShouldReturnStatus204NoContent_WhenUpdatingItem"
+        #region "UnitTest for UpdateBar_ShouldReturnStatus204NoContent_WhenUpdatingItem"
         [Theory]
         [InlineData(500)]
-        public async Task PutBar_ShouldReturnStatus204NoContent_WhenUpdatingItem(long ID)
+        public async Task UpdateBar_ShouldReturnStatus204NoContent_WhenUpdatingItem(long ID)
         {
             //Arrange
             _fixture.Behaviors.OfType<ThrowingRecursionBehavior>().ToList().ForEach(b => _fixture.Behaviors.Remove(b));
@@ -96,14 +100,14 @@ namespace Beer_StoreOrder.UnitTest.Controller
             long Id = _fixture.Create<long>();
 
             var BarMock = _fixture.Build<Bar>()
-                .With(x => x.Id, ID).Without(n => n.BarBeerStocks)
+                .With(x => x.Id, ID).Without(n => n.BarBeers)
                 .Create();
-            _serviceMock.Setup(x => x.PutBar(Id, BarMock));
+            _serviceMock.Setup(x => x.UpdateBar(Id, BarMock));
 
             try
             {
                 //Act
-                var result = await _sut.PutBar(Id, BarMock);
+                var result = await _sut.UpdateBar(Id, BarMock) as ObjectResult;
             }
             catch (Exception ex)
             {

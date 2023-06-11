@@ -12,14 +12,14 @@ namespace Beer_StoreOrder.UnitTest.Service
     {
         #region "Declaration"
         private IFixture _fixture;
-        protected readonly NorthwindContext _dbContext;
+        protected readonly Beer_StoreOrderContext _dbContext;
         public TestBreweryService()
         {
             _fixture = new Fixture();
-            var options = new DbContextOptionsBuilder<NorthwindContext>()
+            var options = new DbContextOptionsBuilder<Beer_StoreOrderContext>()
            .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
             .Options;
-            _dbContext = new NorthwindContext(options);
+            _dbContext = new Beer_StoreOrderContext(options);
             _dbContext.Database.EnsureCreated();
         }
         #endregion
@@ -48,9 +48,9 @@ namespace Beer_StoreOrder.UnitTest.Service
         }
         #endregion
 
-        #region "Unit Test for PostBrewery_ShouldReturnStatus201Created_WhenAddingNewItem"
+        #region "Unit Test for AddBrewery_ShouldReturnStatus201Created_WhenAddingNewItem"
         [Fact]
-        public async Task PostBrewery_ShouldReturnStatus201Created_WhenAddingNewItem()
+        public async Task AddBrewery_ShouldReturnStatus201Created_WhenAddingNewItem()
         {
             /// Arrange
             _fixture.Behaviors.OfType<ThrowingRecursionBehavior>().ToList().ForEach(b => _fixture.Behaviors.Remove(b));
@@ -64,7 +64,7 @@ namespace Beer_StoreOrder.UnitTest.Service
             var _sut = new BreweryService(_dbContext);
 
             /// Act
-            await _sut.PostBrewery(BreweryMock);
+            await _sut.AddBrewery(BreweryMock);
 
             ///Assert
             int expectedRecordCount = (AllBreweryMock.Count() + 1);
@@ -73,10 +73,10 @@ namespace Beer_StoreOrder.UnitTest.Service
         }
         #endregion
 
-        #region "Unit Test for PutBrewery_ShouldReturnStatus204NoContent_WhenUpdatingItem"
+        #region "Unit Test for UpdateBrewery_ShouldReturnStatus204NoContent_WhenUpdatingItem"
         [Theory]
         [InlineData(500)]
-        public async Task PutBrewery_ShouldReturnStatus204NoContent_WhenUpdatingItem(long Id)
+        public async Task UpdateBrewery_ShouldReturnStatus204NoContent_WhenUpdatingItem(long Id)
         {
             _fixture.Behaviors.OfType<ThrowingRecursionBehavior>().ToList().ForEach(b => _fixture.Behaviors.Remove(b));
             _fixture.Behaviors.Add(new OmitOnRecursionBehavior());
@@ -94,7 +94,7 @@ namespace Beer_StoreOrder.UnitTest.Service
             try
             {
                 //Act
-                await _sut.PutBrewery(Id, BreweryMock);
+                await _sut.UpdateBrewery(Id, BreweryMock);
             }
             catch (Exception ex)
             {

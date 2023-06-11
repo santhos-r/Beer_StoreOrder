@@ -26,8 +26,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Added New
-builder.Services.AddDbContext<NorthwindContext>
-    (options => options.UseSqlite("Name=NorthwindDB"));
+builder.Services.AddDbContext<Beer_StoreOrderContext>
+    (options => options.UseSqlite("Name=Beer_StoreOrderDB"));
 
 builder.Services.AddMvc(option => option.EnableEndpointRouting = false)
     .AddNewtonsoftJson(opt => opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
@@ -35,10 +35,10 @@ builder.Services.AddScoped<IBeerService, BeerService>();
 builder.Services.AddScoped<IBreweryService, BreweryService>();
 builder.Services.AddScoped<IBarService, BarService>();
 builder.Services.AddScoped<IBreweryBeerService, BreweryBeerService>();
-builder.Services.AddScoped<IBarBeerStockService, BarBeerStockService>();
+builder.Services.AddScoped<IBarBeerService, BarBeerService>();
 var app = builder.Build();
 
-app.UseMiddleware<ExceptionHandling>();
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

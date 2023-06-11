@@ -9,36 +9,33 @@ namespace Beer_StoreOrder.Service.Services
     public class BarService : IBarService
     {
         //Controller wise Service creation 
-        private readonly NorthwindContext _context;
-
-        public BarService(NorthwindContext context)
+        private readonly Beer_StoreOrderContext _dbContext;
+        public BarService(Beer_StoreOrderContext context)
         {
-            _context = context;
+            _dbContext = context;
         }
         public bool BarExists(long id)
         {
-            return (_context.Bars?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_dbContext.Bars?.Any(e => e.Id == id)).GetValueOrDefault();
         }
-        public async Task PostBar(Bar bar)
+        public async Task<Bar> AddBar(Bar bar)
         {
-            _context.Bars.Add(bar);
-            await _context.SaveChangesAsync();
+           var result =  _dbContext.Bars.Add(bar);
+            await _dbContext.SaveChangesAsync();
+            return result.Entity;
         }
-        public async Task PutBar(long id, Bar bar)
+        public async Task UpdateBar(long id, Bar bar)
         {
-            _context.Entry(bar).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
+            _dbContext.Entry(bar).State = EntityState.Modified;
+            await _dbContext.SaveChangesAsync();
         }
         public async Task<IEnumerable<Bar>> GetBars()
         {
-            var bar = await _context.Bars.ToListAsync();
-            return bar;
+            return await _dbContext.Bars.ToListAsync();            
         }
-
         public async Task<ActionResult<Bar>> GetBarbyId(long id)
         {
-            var bar = await _context.Bars.FindAsync(id);
-            return bar;
+            return await _dbContext.Bars.FindAsync(id);            
         }
     }
 }

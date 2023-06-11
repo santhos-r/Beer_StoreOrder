@@ -8,42 +8,38 @@ namespace Beer_StoreOrder.Service.Services
 {
     public class BreweryService : IBreweryService
     {
-        private readonly NorthwindContext _context;
+        private readonly Beer_StoreOrderContext _dbContext;
 
-        public BreweryService(NorthwindContext context)
+        public BreweryService(Beer_StoreOrderContext context)
         {
-            _context = context;
+            _dbContext = context;
         }
         public bool BreweryExists(long id)
         {
-            return (_context.Breweries?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_dbContext.Breweries?.Any(e => e.Id == id)).GetValueOrDefault();
         }
 
-        #region "Brewery"
-
-        public async Task PostBrewery(Brewery brewery)
+        public async Task<Brewery> AddBrewery(Brewery brewery)
         {
-            _context.Breweries.Add(brewery);
-            await _context.SaveChangesAsync();
+            var result = _dbContext.Breweries.Add(brewery);
+            await _dbContext.SaveChangesAsync();
+            return result.Entity;
         }
-        public async Task PutBrewery(long id, Brewery brewery)
+        public async Task UpdateBrewery(long id, Brewery brewery)
         {
-            _context.Entry(brewery).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
+            _dbContext.Entry(brewery).State = EntityState.Modified;
+            await _dbContext.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<Brewery>> GetBrewery()
         {
-            var brewery = _context.Breweries.ToList();
-            return brewery;
+            return await _dbContext.Breweries.ToListAsync();
         }
 
         public async Task<ActionResult<Brewery>> GetBrewerybyId(long id)
         {
-            var brewery = await _context.Breweries.FindAsync(id);
-            return brewery;
+            return await _dbContext.Breweries.FindAsync(id);
         }
-        #endregion
     }
 }
 
