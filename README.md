@@ -35,16 +35,19 @@ Below are the Technical Stacks used in this project.
 ## To Run this application
 Below are the instruction to be followed to run this application.
 * Download the complete source from the GitHub Page.
-* Download the SQLite database from 
-https://github.com/santhos-r/Beer_StoreOrder/tree/master/Beer_StoreOrder.Modal/Database => Beer_StoreOrder.sqlite
-or go to Beer_StoreOrder.Modal Source and then go to Database/Beer_StoreOrder.sqlite
-* create a new folder in local system and configure the DB Path in the appsettings in VS solution (instead of "E:/SQLLite_DBFile/Beer_StoreOrder.sqlite" you can configure with your       local SQLite DB path in the "Beer_StoreOrder.Api" & "Beer_StoreOrder.Model" project.
-   ##### "ConnectionStrings": {"Beer_StoreOrderDB": "Data source=E:/DB File/E:/SQLLite_DBFile/Beer_StoreOrder.sqlite" }
+* From https://github.com/santhos-r/Beer_StoreOrder/tree/master/Beer_StoreOrder.Modal/Database, download the 
+Beer_StoreOrder.sqlite  database or choose Beer_StoreOrder.Modal Source from the downloaded source project, 
+then navigate to Database/Beer_StoreOrder.sqlite.
+* In the local system, make a new folder and copy the SQLLite database into it.
+* Configure the DB Path in the appsettings in VS solution 
+ (instead of "E:/SQLLite_DBFile/Beer_StoreOrder.sqlite" you can configure with your local 
+ SQLite DB path in the "Beer_StoreOrder.Api" & "Beer_StoreOrder.Model" project.
+   ``` "ConnectionStrings": {"Beer_StoreOrderDB": "Data source=E:/DB File/E:/SQLLite_DBFile/Beer_StoreOrder.sqlite" } ```
 * DBeaver software to be installed in the local system and configure the SQLite database which you placed in your local system path.
 * Once the above configuration is done now you are good to run with the solution.
 
-## Additional Commands 
-If you are facing any issues while running the source codes, execute the below commands in the Nuget Package Manager =>Package Manager Console
+## Additional Commands
+If you are facing any issues while running the source codes, execute the below commands in the Nuget Package Manager =>Package Manager Console in VSCode.
 
 * Packages to install =>
 dotnet add package Microsoft.EntityFrameworkCore.Design
