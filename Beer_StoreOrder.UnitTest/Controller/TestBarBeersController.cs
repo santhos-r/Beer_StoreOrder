@@ -19,6 +19,8 @@ namespace Beer_StoreOrder.UnitTest.Controller
             _fixture = new Fixture();
             _serviceMock = _fixture.Freeze<Mock<IBarBeerService>>();
             _sut = new BarBeersController(_serviceMock.Object);
+            _fixture.Behaviors.OfType<ThrowingRecursionBehavior>().ToList().ForEach(b => _fixture.Behaviors.Remove(b));
+            _fixture.Behaviors.Add(new OmitOnRecursionBehavior());
         }
         #endregion
 
@@ -27,8 +29,6 @@ namespace Beer_StoreOrder.UnitTest.Controller
         public async Task GetBarBeer_ShouldReturn200StatusCode_WhenDataFound()
         {
             //Arrange
-            _fixture.Behaviors.OfType<ThrowingRecursionBehavior>().ToList().ForEach(b => _fixture.Behaviors.Remove(b));
-            _fixture.Behaviors.Add(new OmitOnRecursionBehavior());
             var BarBeerMock = _fixture.CreateMany<Bar>(3).ToList();
             _serviceMock.Setup(x => x.GetBarBeer()).ReturnsAsync(BarBeerMock);
 
@@ -46,8 +46,6 @@ namespace Beer_StoreOrder.UnitTest.Controller
         public async Task GetBarBeer_ShouldReturn404StatusCode_WhenThereAreNoResultFound()
         {
             //Arrange
-            _fixture.Behaviors.OfType<ThrowingRecursionBehavior>().ToList().ForEach(b => _fixture.Behaviors.Remove(b));
-            _fixture.Behaviors.Add(new OmitOnRecursionBehavior());
             IEnumerable<Bar> enumerable = new List<Bar>();
             var BarBeerMock = enumerable;
             _serviceMock.Setup(x => x.GetBarBeer()).ReturnsAsync(BarBeerMock);
@@ -70,9 +68,6 @@ namespace Beer_StoreOrder.UnitTest.Controller
         public async Task AddBarBeer_ShouldReturnStatus201Created_WhenAddingNewItem()
         {
             //Arrange
-            _fixture.Behaviors.OfType<ThrowingRecursionBehavior>().ToList().ForEach(b => _fixture.Behaviors.Remove(b));
-            _fixture.Behaviors.Add(new OmitOnRecursionBehavior());
-
             var BarBeerMock = _fixture.Create<BarBeer>();
             _serviceMock.Setup(x => x.AddBarBeer(BarBeerMock));
 

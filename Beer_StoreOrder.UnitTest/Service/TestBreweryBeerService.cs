@@ -22,6 +22,8 @@ namespace Beer_StoreOrder.UnitTest.Service
             .Options;
             _dbContext = new Beer_StoreOrderContext(options);
             _dbContext.Database.EnsureCreated();
+            _fixture.Behaviors.OfType<ThrowingRecursionBehavior>().ToList().ForEach(b => _fixture.Behaviors.Remove(b));
+            _fixture.Behaviors.Add(new OmitOnRecursionBehavior());
         }
         #endregion
 
@@ -30,8 +32,6 @@ namespace Beer_StoreOrder.UnitTest.Service
         public async Task GetBreweryBeer_ShouldReturn200StatusCode_WhenDataFound()
         {
             //Arrange
-            _fixture.Behaviors.OfType<ThrowingRecursionBehavior>().ToList().ForEach(b => _fixture.Behaviors.Remove(b));
-            _fixture.Behaviors.Add(new OmitOnRecursionBehavior());
             var BreweryBeerMock = _fixture.CreateMany<Brewery>(3).ToList();
             _dbContext.Breweries.AddRange(BreweryBeerMock);
             await _dbContext.SaveChangesAsync();
@@ -54,8 +54,6 @@ namespace Beer_StoreOrder.UnitTest.Service
         public async Task AddBreweryBeer_ShouldReturnStatus201Created_WhenAddingNewItem()
         {
             // Arrange
-            _fixture.Behaviors.OfType<ThrowingRecursionBehavior>().ToList().ForEach(b => _fixture.Behaviors.Remove(b));
-            _fixture.Behaviors.Add(new OmitOnRecursionBehavior());
             var AllBreweryBeerMock = _fixture.CreateMany<Beer>(3).ToList();
             var BreweryBeerMock = _fixture.Create<Beer>();
 

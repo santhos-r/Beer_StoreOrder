@@ -5,7 +5,6 @@ using Beer_StoreOrder.Service.Services;
 using FluentAssertions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace Beer_StoreOrder.UnitTest.Service
 {
@@ -22,18 +21,17 @@ namespace Beer_StoreOrder.UnitTest.Service
            .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
             .Options;
             _dbContext = new Beer_StoreOrderContext(options);
-            _dbContext.Database.EnsureCreated();            
+            _dbContext.Database.EnsureCreated();
+            _fixture.Behaviors.OfType<ThrowingRecursionBehavior>().ToList().ForEach(b => _fixture.Behaviors.Remove(b));
+            _fixture.Behaviors.Add(new OmitOnRecursionBehavior());
         }
         #endregion
-
 
         #region "UnitTest for GetBeerById_ShouldReturn200StatusCode_WhenDataFound"
         [Fact]
         public async Task GetBeerById_ShouldReturn200StatusCode_WhenDataFound()
         {
-            //Arrange
-            _fixture.Behaviors.OfType<ThrowingRecursionBehavior>().ToList().ForEach(b => _fixture.Behaviors.Remove(b));
-            _fixture.Behaviors.Add(new OmitOnRecursionBehavior());
+            //Arrange       
             _fixture.Register<int>(() => 5);
             int Id = _fixture.Create<int>();
             var BeerMock = _fixture.Build<Beer>().With(x => x.Id, Id).Create();
@@ -57,9 +55,6 @@ namespace Beer_StoreOrder.UnitTest.Service
         public async Task AddBeer_ShouldReturnStatus201Created_WhenAddingNewItem()
         {
             //Arrange
-            _fixture.Behaviors.OfType<ThrowingRecursionBehavior>().ToList().ForEach(b => _fixture.Behaviors.Remove(b));
-            _fixture.Behaviors.Add(new OmitOnRecursionBehavior());
-
             var AllBeerMock = _fixture.CreateMany<Beer>(3).ToList();
             var BeerMock = _fixture.Create<Beer>();
 
@@ -84,9 +79,6 @@ namespace Beer_StoreOrder.UnitTest.Service
         public async Task UpdateBeer_ShouldReturnStatus204NoContent_WhenUpdatingItem(long ID)
         {
             //Arrange
-            _fixture.Behaviors.OfType<ThrowingRecursionBehavior>().ToList().ForEach(b => _fixture.Behaviors.Remove(b));
-            _fixture.Behaviors.Add(new OmitOnRecursionBehavior());
-
             _fixture.Register<long>(() => ID);
             long Id = _fixture.Create<long>();            
             var BeerMock = _fixture.CreateMany<Beer>(3).ToList();

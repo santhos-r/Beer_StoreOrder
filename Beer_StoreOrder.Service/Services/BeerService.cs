@@ -3,12 +3,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Beer_StoreOrder.Model.Data;
 using Beer_StoreOrder.Model.Models;
-
 namespace Beer_StoreOrder.Service.Services
 {
     public class BeerService : IBeerService
     {
-        //Controller wise Service creation 
         private readonly Beer_StoreOrderContext _dbContext;
         public BeerService(Beer_StoreOrderContext context)
         {

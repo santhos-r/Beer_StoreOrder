@@ -2,13 +2,11 @@
 using Microsoft.EntityFrameworkCore;
 using Beer_StoreOrder.Model.Data;
 using Beer_StoreOrder.Model.Models;
-
 namespace Beer_StoreOrder.Service.Services
 {
     public class BreweryBeerService : IBreweryBeerService
     {
         private readonly Beer_StoreOrderContext _dbContext;
-
         public BreweryBeerService(Beer_StoreOrderContext context)
         {
             _dbContext = context;

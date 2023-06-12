@@ -1,4 +1,4 @@
-using Beer_StoreOrder.Api.Logger;
+using Beer_StoreOrder.Api.Middleware;
 using Beer_StoreOrder.Service.Services;
 using Beer_StoreOrder.Service.Services.Interface;
 using Microsoft.EntityFrameworkCore;
@@ -38,7 +38,7 @@ builder.Services.AddScoped<IBreweryBeerService, BreweryBeerService>();
 builder.Services.AddScoped<IBarBeerService, BarBeerService>();
 var app = builder.Build();
 
-app.UseMiddleware<ExceptionHandlingMiddleware>();
+app.UseMiddleware<ExceptionHandler>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

@@ -3,7 +3,6 @@ using Beer_StoreOrder.Model.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Beer_StoreOrder.Service.Services.Interface;
-
 namespace Beer_StoreOrder.Service.Services
 {
     public class BreweryService : IBreweryService
@@ -30,12 +29,10 @@ namespace Beer_StoreOrder.Service.Services
             _dbContext.Entry(brewery).State = EntityState.Modified;
             await _dbContext.SaveChangesAsync();
         }
-
         public async Task<IEnumerable<Brewery>> GetBrewery()
         {
             return await _dbContext.Breweries.ToListAsync();
         }
-
         public async Task<ActionResult<Brewery>> GetBrewerybyId(long id)
         {
             return await _dbContext.Breweries.FindAsync(id);

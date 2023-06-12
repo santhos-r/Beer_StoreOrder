@@ -1,5 +1,5 @@
 # Beer StoreOrder
-This project created to produce a .NET Core Web Api which stores, updates and retrieves different types of beer, their associated breweries and bars 
+This project is created to produce a .NET Core Web Api which stores, updates and retrieves different types of beer, their associated breweries and bars 
 that serve the beers & included with unit tests.
 
 ## DB Structure

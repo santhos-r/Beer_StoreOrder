@@ -1,10 +1,6 @@
 ﻿using Beer_StoreOrder.Service.Services.Interface;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Beer_StoreOrder.Model.Models;
-using Microsoft.Build.Framework;
-
-
 namespace Beer_StoreOrder.Api.Controllers
 {
     [Route("api/bar")]

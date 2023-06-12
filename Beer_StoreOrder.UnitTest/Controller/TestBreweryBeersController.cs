@@ -21,6 +21,8 @@ namespace Beer_StoreOrder.UnitTest.Controller
             _fixture = new Fixture();
             _serviceMock = _fixture.Freeze<Mock<IBreweryBeerService>>();
             _sut = new BreweryBeersController(_serviceMock.Object);
+            _fixture.Behaviors.OfType<ThrowingRecursionBehavior>().ToList().ForEach(b => _fixture.Behaviors.Remove(b));
+            _fixture.Behaviors.Add(new OmitOnRecursionBehavior());
         }
         #endregion
 
@@ -29,8 +31,6 @@ namespace Beer_StoreOrder.UnitTest.Controller
         public async Task GetBreweryBeer_ShouldReturn200StatusCode_WhenDataFound()
         {
             //Arrange
-            _fixture.Behaviors.OfType<ThrowingRecursionBehavior>().ToList().ForEach(b => _fixture.Behaviors.Remove(b));
-            _fixture.Behaviors.Add(new OmitOnRecursionBehavior());
             var BreweryBeerMock = _fixture.CreateMany<Brewery>(3).ToList();
             _serviceMock.Setup(x => x.GetBreweryBeer()).ReturnsAsync(BreweryBeerMock);
 
@@ -48,8 +48,6 @@ namespace Beer_StoreOrder.UnitTest.Controller
         public async Task GetBreweryBeer_ShouldReturn404StatusCode_WhenThereAreNoResultFound()
         {
             //Arrange
-            _fixture.Behaviors.OfType<ThrowingRecursionBehavior>().ToList().ForEach(b => _fixture.Behaviors.Remove(b));
-            _fixture.Behaviors.Add(new OmitOnRecursionBehavior());
             IEnumerable<Brewery> enumerable = new List<Brewery>();
             var BreweryBeerMock = enumerable;
             _serviceMock.Setup(x => x.GetBreweryBeer()).ReturnsAsync(BreweryBeerMock);
@@ -72,9 +70,6 @@ namespace Beer_StoreOrder.UnitTest.Controller
         public async Task AddBreweryBeer_ShouldReturnStatus201Created_WhenAddingNewItem()
         {
             //Arrange
-            _fixture.Behaviors.OfType<ThrowingRecursionBehavior>().ToList().ForEach(b => _fixture.Behaviors.Remove(b));
-            _fixture.Behaviors.Add(new OmitOnRecursionBehavior());
-
             var BreweryBeerMock = _fixture.Create<Beer>();
             _serviceMock.Setup(x => x.AddBreweryBeer(BreweryBeerMock));
 

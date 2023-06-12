@@ -21,6 +21,8 @@ namespace Beer_StoreOrder.UnitTest.Service
             .Options;
             _dbContext = new Beer_StoreOrderContext(options);
             _dbContext.Database.EnsureCreated();
+            _fixture.Behaviors.OfType<ThrowingRecursionBehavior>().ToList().ForEach(b => _fixture.Behaviors.Remove(b));
+            _fixture.Behaviors.Add(new OmitOnRecursionBehavior());
         }
         #endregion
 
@@ -28,9 +30,7 @@ namespace Beer_StoreOrder.UnitTest.Service
         [Fact]
         public async Task GetBrewery_ShouldReturn200StatusCode_WhenDataFound()
         {
-            /// Arrange
-            _fixture.Behaviors.OfType<ThrowingRecursionBehavior>().ToList().ForEach(b => _fixture.Behaviors.Remove(b));
-            _fixture.Behaviors.Add(new OmitOnRecursionBehavior());
+            /// Arrange           
             var BreweryMock = _fixture.CreateMany<Brewery>(3).ToList();
             _dbContext.Breweries.AddRange(BreweryMock);
             await _dbContext.SaveChangesAsync();
@@ -53,14 +53,11 @@ namespace Beer_StoreOrder.UnitTest.Service
         public async Task AddBrewery_ShouldReturnStatus201Created_WhenAddingNewItem()
         {
             /// Arrange
-            _fixture.Behaviors.OfType<ThrowingRecursionBehavior>().ToList().ForEach(b => _fixture.Behaviors.Remove(b));
-            _fixture.Behaviors.Add(new OmitOnRecursionBehavior());
             var AllBreweryMock = _fixture.CreateMany<Brewery>(3).ToList();
             var BreweryMock = _fixture.Create<Brewery>();
 
             _dbContext.Breweries.AddRange(AllBreweryMock);
             await _dbContext.SaveChangesAsync();
-
             var _sut = new BreweryService(_dbContext);
 
             /// Act
@@ -78,9 +75,6 @@ namespace Beer_StoreOrder.UnitTest.Service
         [InlineData(500)]
         public async Task UpdateBrewery_ShouldReturnStatus204NoContent_WhenUpdatingItem(long Id)
         {
-            _fixture.Behaviors.OfType<ThrowingRecursionBehavior>().ToList().ForEach(b => _fixture.Behaviors.Remove(b));
-            _fixture.Behaviors.Add(new OmitOnRecursionBehavior());
-
             var AllBreweryMock = _fixture.CreateMany<Brewery>(3).ToList();
             var BreweryMock = _fixture.Build<Brewery>()
                 .With(x => x.Id, Id).Without(n => n.Beers)

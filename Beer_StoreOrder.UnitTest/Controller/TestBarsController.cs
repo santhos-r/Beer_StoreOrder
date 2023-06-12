@@ -2,7 +2,6 @@
 using Beer_StoreOrder.Api.Controllers;
 using Beer_StoreOrder.Model.Models;
 using Beer_StoreOrder.Service.Services.Interface;
-using FluentAssertions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
@@ -20,6 +19,8 @@ namespace Beer_StoreOrder.UnitTest.Controller
             _fixture = new Fixture();
             _serviceMock = _fixture.Freeze<Mock<IBarService>>();
             _sut = new BarsController(_serviceMock.Object);
+            _fixture.Behaviors.OfType<ThrowingRecursionBehavior>().ToList().ForEach(b => _fixture.Behaviors.Remove(b));
+            _fixture.Behaviors.Add(new OmitOnRecursionBehavior());
         }
         #endregion
 
@@ -27,9 +28,7 @@ namespace Beer_StoreOrder.UnitTest.Controller
         [Fact]
         public async Task GetBars_ShouldReturn200StatusCode_WhenDataFound()
         {
-            //Arrange
-            _fixture.Behaviors.OfType<ThrowingRecursionBehavior>().ToList().ForEach(b => _fixture.Behaviors.Remove(b));
-            _fixture.Behaviors.Add(new OmitOnRecursionBehavior());
+            //Arrange  
             var BarMock = _fixture.CreateMany<Bar>(3).ToList();
             _serviceMock.Setup(x => x.GetBars()).ReturnsAsync(BarMock);
 
@@ -47,8 +46,6 @@ namespace Beer_StoreOrder.UnitTest.Controller
         public async Task GetBars_ShouldReturn404StatusCode_WhenThereAreNoResultFound()
         {
             //Arrange
-            _fixture.Behaviors.OfType<ThrowingRecursionBehavior>().ToList().ForEach(b => _fixture.Behaviors.Remove(b));
-            _fixture.Behaviors.Add(new OmitOnRecursionBehavior());
             IEnumerable<Bar> enumerable = new List<Bar>();
             var BarMock = enumerable;
             _serviceMock.Setup(x => x.GetBars()).ReturnsAsync(BarMock);
@@ -93,9 +90,6 @@ namespace Beer_StoreOrder.UnitTest.Controller
         public async Task UpdateBar_ShouldReturnStatus204NoContent_WhenUpdatingItem(long ID)
         {
             //Arrange
-            _fixture.Behaviors.OfType<ThrowingRecursionBehavior>().ToList().ForEach(b => _fixture.Behaviors.Remove(b));
-            _fixture.Behaviors.Add(new OmitOnRecursionBehavior());
-
             _fixture.Register<long>(() => ID);
             long Id = _fixture.Create<long>();
 

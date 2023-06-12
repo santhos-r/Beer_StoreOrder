@@ -19,6 +19,8 @@ namespace Beer_StoreOrder.UnitTest.Controller
             _fixture = new Fixture();
             _serviceMock = _fixture.Freeze<Mock<IBreweryService>>();
             _sut = new BrewerysController(_serviceMock.Object);
+            _fixture.Behaviors.OfType<ThrowingRecursionBehavior>().ToList().ForEach(b => _fixture.Behaviors.Remove(b));
+            _fixture.Behaviors.Add(new OmitOnRecursionBehavior());
         }
         #endregion
 
@@ -27,8 +29,6 @@ namespace Beer_StoreOrder.UnitTest.Controller
         public async Task GetBrewery_ShouldReturn200StatusCode_WhenDataFound()
         {
             //Arrange
-            _fixture.Behaviors.OfType<ThrowingRecursionBehavior>().ToList().ForEach(b => _fixture.Behaviors.Remove(b));
-            _fixture.Behaviors.Add(new OmitOnRecursionBehavior());
             var BreweryMock = _fixture.CreateMany<Brewery>(3).ToList();
             _serviceMock.Setup(x => x.GetBrewery()).ReturnsAsync(BreweryMock);
 
@@ -46,8 +46,6 @@ namespace Beer_StoreOrder.UnitTest.Controller
         public async Task GetBrewery_ShouldReturn404StatusCode_WhenThereAreNoResultFound()
         {
             //Arrange
-            _fixture.Behaviors.OfType<ThrowingRecursionBehavior>().ToList().ForEach(b => _fixture.Behaviors.Remove(b));
-            _fixture.Behaviors.Add(new OmitOnRecursionBehavior());
             IEnumerable<Brewery> enumerable = new List<Brewery>();
             var BreweryMock = enumerable;
             _serviceMock.Setup(x => x.GetBrewery()).ReturnsAsync(BreweryMock);
@@ -69,9 +67,6 @@ namespace Beer_StoreOrder.UnitTest.Controller
         public async Task AddBrewery_ShouldReturnStatus201Created_WhenAddingNewItem()
         {
             //Arrange
-            _fixture.Behaviors.OfType<ThrowingRecursionBehavior>().ToList().ForEach(b => _fixture.Behaviors.Remove(b));
-            _fixture.Behaviors.Add(new OmitOnRecursionBehavior());
-
             var BreweryMock = _fixture.Create<Brewery>();
             _serviceMock.Setup(x => x.AddBrewery(BreweryMock));
 
@@ -90,9 +85,6 @@ namespace Beer_StoreOrder.UnitTest.Controller
         public async Task UpdateBrewery_ShouldReturnStatus204NoContent_WhenUpdatingItem(long ID)
         {
             //Arrange
-            _fixture.Behaviors.OfType<ThrowingRecursionBehavior>().ToList().ForEach(b => _fixture.Behaviors.Remove(b));
-            _fixture.Behaviors.Add(new OmitOnRecursionBehavior());
-
             _fixture.Register<long>(() => ID);
             long Id = _fixture.Create<long>();
 
